@@ -1,0 +1,248 @@
+import Chart from 'chart.js/auto';
+import dayjs from 'dayjs';
+import { gumDetail } from './data/gum-data';
+import dashboardApi from './api/dasboardApi';
+
+// const semiDlineChart = document.getElementById('semiDlineChart');
+
+// const data = {
+//     labels: [
+//         'Actual',
+//         'Diff',
+//     ],
+//     datasets: [{
+//         label: 'D-line',
+//         data: [70, 30],
+//         backgroundColor: [
+//             '#00ff1b',
+//             '#d60d0d',
+//         ],
+//     }]
+// };
+
+// new Chart(semiDlineChart, {
+//     type: 'doughnut',
+//     data: data,
+//     options: {
+//         plugins: {
+//             legend: {
+//                 display: false
+//             },
+//             tooltip: {
+//                 enabled: false
+//             },
+//         },
+//     },
+// });
+
+const initLoadCountData = (element, data, status) => {
+    const htmlEle = document.getElementById(element);
+    htmlEle.classList.remove("text_danger", "text_success");
+    if (htmlEle) {
+        htmlEle.textContent = data;
+        if (!element.includes("target")) {
+            if ((status).toString() === "1") {
+                htmlEle.classList.add("text_danger");
+            } else if ((status).toString() === "0") {
+                htmlEle.classList.add("text_success");
+            }
+        }
+    }
+}
+
+const dataOfEachLocation = (location, productData) => {
+    return productData.filter(x => (x.type).toString() === location);
+}
+
+const initLoadDataEachLocation = (data, element, location) => {
+    const rootEle = document.querySelector(element);
+    data.map((x, index) => {
+        const title = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .top h2`);
+        title.textContent = x.name;
+
+        const percent = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .top .chart span`);
+        percent.textContent = `${(Math.round((x.actual / x.totalTarget) * 100))}%`;
+
+        const target = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(1) h4:nth-child(2)`);
+        target.textContent = x.totalTarget;
+
+        const actual = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(2) h4:nth-child(2)`);
+        actual.textContent = x.actual;
+        actual.classList.remove("text_danger", "text_success");
+        if ((x.status).toString() === "1") {
+            actual.classList.add("text_danger");
+        } else if ((x.status).toString() === "0") {
+            actual.classList.add("text_success");
+        }
+
+        // const actual = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(2)`);
+        // if ((x.status).toString() === "1") {
+        //     actual.innerHTML =
+        //         `
+        //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
+        //             Actual
+        //         </h4>
+        //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color text_danger">
+        //             ${x.actual}
+        //         </h4>
+        //         `
+        // } else if ((x.status).toString() === "0") {
+        //     actual.innerHTML =
+        //         `
+        //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
+        //             Actual
+        //         </h4>
+        //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color text_success">
+        //             ${x.actual}
+        //         </h4>
+        //         `
+        // } else {
+        //     actual.innerHTML =
+        //         `
+        //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
+        //             Actual
+        //         </h4>
+        //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color">
+        //             ${x.actual}
+        //         </h4>
+        //         `
+        // }
+
+        const diff = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(3) h4:nth-child(2)`);
+        diff.textContent = x.different;
+        diff.classList.remove("text_danger", "text_success");
+        if ((x.status).toString() === "1") {
+            diff.classList.add("text_danger");
+        } else if ((x.status).toString() === "0") {
+            diff.classList.add("text_success");
+        }
+
+        // const diff = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(3)`);
+        // if ((x.status).toString() === "1") {
+        //     diff.innerHTML =
+        //         `
+        //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
+        //             Diff.
+        //         </h4>
+        //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color text_danger">
+        //             ${x.different}
+        //         </h4>
+        //         `
+        // } else if ((x.status).toString() === "0") {
+        //     diff.innerHTML =
+        //         `
+        //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
+        //             Diff.
+        //         </h4>
+        //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color text_success">
+        //             ${x.different}
+        //         </h4>
+        //         `
+        // } else {
+        //     diff.innerHTML =
+        //         `
+        //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
+        //             Diff.
+        //         </h4>
+        //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color">
+        //             ${x.different}
+        //         </h4>
+        //         `
+        // }
+
+        const chartData = [x.actual, x.totalTarget - x.actual];
+
+        const chart = Chart.getChart(`${location}_${index + 1}`);
+        chart.config.data.datasets[0].data = chartData;
+        chart.update();
+    }
+    );
+}
+
+const initLoadData = (data) => {
+    console.log("run");
+    const semiData = dataOfEachLocation("0", data);
+    const fgData = dataOfEachLocation("1", data);
+
+    initLoadDataEachLocation(semiData, ".content-semi-list", "semi");
+    initLoadDataEachLocation(fgData, ".content-finished-list", "fg");
+}
+
+
+const renderChart = (location, numberOfChart) => {
+    for (let i = 1; i <= numberOfChart; i++) {
+        let chart = Chart.getChart(`${location}_${i}`);
+        if (chart) {
+            chart.destroy();
+        }
+
+        const chartEle = document.getElementById(`${location}_${i}`);
+        if (chartEle) {
+            const data = {
+                // labels: [
+                //     'Actual',
+                //     'Target',
+                // ],
+                datasets: [{
+                    label: 'D-line',
+                    data: [],
+                    backgroundColor: [
+                        '#00ff1b',
+                        '#d60d0d',
+                    ],
+                }]
+            };
+
+            chart = new Chart(chartEle, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        },
+                    },
+                },
+            });
+        }
+    }
+}
+
+
+(() => {
+
+    // try {
+    //     const data = await dashboardApi.getGum();
+    //     console.log(data);
+
+    // } catch (error) {
+    //     console.log("failed to fetch data", error);
+    // }
+
+    const dateEle = document.querySelector(".header-content .right .date");
+    dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
+
+    renderChart("semi", 4);
+    renderChart("fg", 4);
+
+    function countTime() {
+        const timeEle = document.querySelector(".header-content .right .time");
+        timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
+        setTimeout(countTime, 1000);
+    }
+
+    countTime();
+
+    function loadData() {
+        const data = gumDetail;
+        initLoadData(data.locations);
+
+        setTimeout(loadData, 1000);
+    }
+
+    loadData();
+
+})();
