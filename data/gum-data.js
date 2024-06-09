@@ -2,22 +2,27 @@ export const gumDetail = {
     "name": "Gum",
     "semiTotalTarget": 400,
     "semiHourlyTarget": 200,
-    "semiActual": 132,
-    "semiDifferent": -68,
+    "semiActual": 181,
+    "semiDifferent": -19,
     "semiStatus": 1,
     "finishTotalTarget": 400,
     "finishHourlyTarget": 200,
-    "finishActual": 82,
-    "finishDifferent": -118,
+    "finishActual": 121,
+    "finishDifferent": -79,
     "finishStatus": 1,
+    "totalTarget": 800,
+    "hourlyTarget": 400,
+    "actual": 302,
+    "different": -98,
+    "status": 1,
     "locations": [
         {
             "name": "Gum 01",
             "type": 0,
             "totalTarget": 100,
             "hourlyTarget": 50,
-            "actual": 49,
-            "different": -1,
+            "actual": 31,
+            "different": -19,
             "status": 1
         },
         {
@@ -25,8 +30,8 @@ export const gumDetail = {
             "type": 1,
             "totalTarget": 100,
             "hourlyTarget": 50,
-            "actual": 19,
-            "different": -31,
+            "actual": 26,
+            "different": -24,
             "status": 1
         },
         {
@@ -34,8 +39,8 @@ export const gumDetail = {
             "type": 0,
             "totalTarget": 100,
             "hourlyTarget": 50,
-            "actual": 56,
-            "different": 6,
+            "actual": 73,
+            "different": 23,
             "status": 0
         },
         {
@@ -43,8 +48,8 @@ export const gumDetail = {
             "type": 1,
             "totalTarget": 100,
             "hourlyTarget": 50,
-            "actual": 1,
-            "different": -49,
+            "actual": 12,
+            "different": -38,
             "status": 1
         },
         {
@@ -52,8 +57,8 @@ export const gumDetail = {
             "type": 0,
             "totalTarget": 100,
             "hourlyTarget": 50,
-            "actual": 17,
-            "different": -33,
+            "actual": 43,
+            "different": -7,
             "status": 1
         },
         {
@@ -61,8 +66,8 @@ export const gumDetail = {
             "type": 1,
             "totalTarget": 100,
             "hourlyTarget": 50,
-            "actual": 56,
-            "different": 6,
+            "actual": 71,
+            "different": 21,
             "status": 0
         },
         {
@@ -70,8 +75,8 @@ export const gumDetail = {
             "type": 0,
             "totalTarget": 100,
             "hourlyTarget": 50,
-            "actual": 10,
-            "different": -40,
+            "actual": 34,
+            "different": -16,
             "status": 1
         },
         {
@@ -79,8 +84,98 @@ export const gumDetail = {
             "type": 1,
             "totalTarget": 100,
             "hourlyTarget": 50,
-            "actual": 6,
-            "different": -44,
+            "actual": 12,
+            "different": -38,
+            "status": 1
+        },
+        {
+            "name": "Gum 05",
+            "type": 0,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 34,
+            "different": -16,
+            "status": 1
+        },
+        {
+            "name": "Gum 05",
+            "type": 1,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 12,
+            "different": -38,
+            "status": 1
+        },
+        {
+            "name": "Gum 06",
+            "type": 0,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 34,
+            "different": -16,
+            "status": 1
+        },
+        {
+            "name": "Gum 06",
+            "type": 1,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 12,
+            "different": -38,
+            "status": 1
+        },
+        {
+            "name": "Gum 07",
+            "type": 0,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 34,
+            "different": -16,
+            "status": 1
+        },
+        {
+            "name": "Gum 07",
+            "type": 1,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 12,
+            "different": -38,
+            "status": 1
+        },
+        {
+            "name": "Gum 08",
+            "type": 0,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 34,
+            "different": -16,
+            "status": 1
+        },
+        {
+            "name": "Gum 08",
+            "type": 1,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 12,
+            "different": -38,
+            "status": 1
+        },
+        {
+            "name": "Gum 09",
+            "type": 0,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 34,
+            "different": -16,
+            "status": 1
+        },
+        {
+            "name": "Gum 09",
+            "type": 1,
+            "totalTarget": 100,
+            "hourlyTarget": 50,
+            "actual": 12,
+            "different": -38,
             "status": 1
         }
     ]

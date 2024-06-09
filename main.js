@@ -153,7 +153,7 @@ const locationData = (product, productData) => {
             locationData(PRODUCTS[i], productData);
         }
 
-        console.log("refresh");
+        // console.log("refresh");
 
         setTimeout(fetchDataAndReload, 10000);
     }

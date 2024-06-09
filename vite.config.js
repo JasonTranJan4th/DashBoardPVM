@@ -7,6 +7,7 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'index.html'),
                 gum: resolve(__dirname, 'gum.html'),
+                mentos: resolve(__dirname, 'mentos.html'),
             }
         }
     }

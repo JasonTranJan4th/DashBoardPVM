@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    outline: none;
+    border: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+:root {
+    --success: #00ff1b;
+    --danger: #d60d0d;
+    --normal: #ebf10a;
+}
+
+body {
+    font-family: "Sora", sans-serif;
+}
+
+.wrapper {
+    padding: 0.694vw;
+    margin: 0 auto;
+    font-size: 1.111vw;
+}
+
+.status_danger {
+    background-color: var(--danger);
+    color: white;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    50% {
+        background-color: white;
+        color: black;
+    }
+}
+
+.status_success {
+    background-color: var(--success);
+}
+
+.status_normal {
+    background-color: var(--normal);
+}
+
+.text_danger {
+    color: var(--danger);
+}
+
+.text_normal {
+    color: var(--normal);
+}
+
+.text_success {
+    color: var(--success);
+}

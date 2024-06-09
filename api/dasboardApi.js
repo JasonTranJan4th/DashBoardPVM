@@ -9,6 +9,10 @@ const dashboardApi = {
     getGum() {
         const url = "/dashboard/1";
         return axiosClient.get(url);
+    },
+    getMentos() {
+        const url = "/dashboard/0";
+        return axiosClient.get(url);
     }
 };
 

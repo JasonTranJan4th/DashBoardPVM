@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
-import { gumDetail } from './data/gum-data';
+import { mentosDetail } from './data/mentos-data';
 import dashboardApi from './api/dasboardApi';
 
 // const semiDlineChart = document.getElementById('semiDlineChart');
@@ -56,10 +56,9 @@ const dataOfEachLocation = (location, productData) => {
 
 const initLoadDataEachLocation = (data, element, location) => {
     const rootEle = document.querySelector(element);
-    // console.log(rootEle);
+
     data.map((x, index) => {
         const title = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .top h2`);
-        // console.log(title);
         title.textContent = x.name;
 
         const percent = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .top .chart span`);
@@ -187,7 +186,7 @@ const renderChart = (location, numberOfChart) => {
                 // ],
                 datasets: [{
                     label: 'D-line',
-                    data: [],
+                    data: [50, 50],
                     backgroundColor: [
                         '#00ff1b',
                         '#d60d0d',
@@ -217,7 +216,7 @@ const renderChart = (location, numberOfChart) => {
 (() => {
 
     // try {
-    //     const data = await dashboardApi.getGum();
+    //     const data = await dashboardApi.getMentos();
     //     console.log(data);
 
     // } catch (error) {
@@ -227,8 +226,11 @@ const renderChart = (location, numberOfChart) => {
     const dateEle = document.querySelector(".header-content .right .date");
     dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
 
-    renderChart("semi", 9);
-    renderChart("fg", 9);
+    renderChart("semi", 4);
+    renderChart("fg", 7);
+    /**
+     * note: API gửi lên bao nhiêu item thì rederChart sẽ phải render bấy nhiêu item
+     */
 
     function countTime() {
         const timeEle = document.querySelector(".header-content .right .time");
@@ -239,7 +241,7 @@ const renderChart = (location, numberOfChart) => {
     countTime();
 
     function loadData() {
-        const data = gumDetail;
+        const data = mentosDetail;
 
         initLoadCountData("target", data.totalTarget, data.status);
         initLoadCountData("actual", data.actual, data.status);
