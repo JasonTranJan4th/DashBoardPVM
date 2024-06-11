@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: 'http://103.72.97.244:8000',
+    baseURL: 'http://localhost:8000',
     headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+        // "Access-Control-Allow-Origin": true,
+        // 'Access-Control-Allow-Headers': '*',
+        // 'Access-Control-Allow-Credentials': 'true',
+        // 'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
         'Content-Type': 'application/json',
     },
 });

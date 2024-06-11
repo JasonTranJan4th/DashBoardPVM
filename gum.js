@@ -39,7 +39,7 @@ const initLoadCountData = (element, data, status) => {
     const htmlEle = document.getElementById(element);
     htmlEle.classList.remove("text_danger", "text_success");
     if (htmlEle) {
-        htmlEle.textContent = data;
+        htmlEle.textContent = new Intl.NumberFormat().format(data);
         if (!element.includes("target")) {
             if ((status).toString() === "1") {
                 htmlEle.classList.add("text_danger");
@@ -66,10 +66,10 @@ const initLoadDataEachLocation = (data, element, location) => {
         percent.textContent = `${(Math.round((x.actual / x.totalTarget) * 100))}%`;
 
         const target = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(1) h4:nth-child(2)`);
-        target.textContent = x.totalTarget;
+        target.textContent = new Intl.NumberFormat().format(x.totalTarget);
 
         const actual = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(2) h4:nth-child(2)`);
-        actual.textContent = x.actual;
+        actual.textContent = new Intl.NumberFormat().format(x.actual);
         actual.classList.remove("text_danger", "text_success");
         if ((x.status).toString() === "1") {
             actual.classList.add("text_danger");
@@ -111,7 +111,7 @@ const initLoadDataEachLocation = (data, element, location) => {
         // }
 
         const diff = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(3) h4:nth-child(2)`);
-        diff.textContent = x.different;
+        diff.textContent = new Intl.NumberFormat().format(x.different);
         diff.classList.remove("text_danger", "text_success");
         if ((x.status).toString() === "1") {
             diff.classList.add("text_danger");
@@ -216,14 +216,6 @@ const renderChart = (location, numberOfChart) => {
 
 (() => {
 
-    // try {
-    //     const data = await dashboardApi.getGum();
-    //     console.log(data);
-
-    // } catch (error) {
-    //     console.log("failed to fetch data", error);
-    // }
-
     const dateEle = document.querySelector(".header-content .right .date");
     dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
 
@@ -238,7 +230,12 @@ const renderChart = (location, numberOfChart) => {
 
     countTime();
 
-    function loadData() {
+    async function loadData() {
+
+        // try {
+        //     const { data } = await dashboardApi.getGum();
+        // console.log(data);
+
         const data = gumDetail;
 
         initLoadCountData("target", data.totalTarget, data.status);
@@ -247,7 +244,11 @@ const renderChart = (location, numberOfChart) => {
 
         initLoadData(data.locations);
 
-        setTimeout(loadData, 1000);
+        // } catch (error) {
+        //     console.log("failed to fetch data", error);
+        // }
+
+        setTimeout(loadData, 5000);
     }
 
     loadData();

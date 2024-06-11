@@ -23,7 +23,7 @@ const addMoreLine = (data, type) => {
 
     const dataLength = data.length;
 
-    if (dataLength === "9") {
+    if (dataLength.toString() === "9") {
         return data;
     }
 
@@ -36,7 +36,7 @@ const initLoadCountData = (element, data, status) => {
     const htmlEle = document.getElementById(element);
     htmlEle.classList.remove("text_danger", "text_success");
     if (htmlEle) {
-        htmlEle.textContent = data;
+        htmlEle.textContent = new Intl.NumberFormat().format(data);
         if (!element.includes("target")) {
             if ((status).toString() === "1") {
                 htmlEle.classList.add("text_danger");
@@ -57,19 +57,19 @@ const initLoadDataEachLocation = (data, rootElement, product) => {
                 return `<tr class="text-[10px] md:text-[0.764vw] font-[600]">
                             <td class="border border-slate-300 h-[35px] md:h-[2.083vw] status_danger"></td>
                             <td class="border border-slate-300">${x.name}</td>
-                            <td class="border border-slate-300 text-right">${x.totalTarget}</td>
-                            <td class="border border-slate-300 text-right">${x.hourlyTarget}</td>
-                            <td class="border border-slate-300 text-right text_danger">${x.actual}</td>
-                            <td class="border border-slate-300 text-right text_danger">${x.different}</td>
+                            <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
+                            <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
+                            <td class="border border-slate-300 text-right text_danger">${new Intl.NumberFormat().format(x.actual)}</td>
+                            <td class="border border-slate-300 text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
                         </tr>`
             } else if ((x.status).toString() === "0") {
                 return `<tr class="text-[10px] md:text-[0.764vw] font-[600]">
                             <td class="border border-slate-300 h-[35px] md:h-[2.083vw] bg-success"></td>
                             <td class="border border-slate-300">${x.name}</td>
-                            <td class="border border-slate-300 text-right">${x.totalTarget}</td>
-                            <td class="border border-slate-300 text-right">${x.hourlyTarget}</td>
-                            <td class="border border-slate-300 text-right text_success">${x.actual}</td>
-                            <td class="border border-slate-300 text-right text_success">${x.different}</td>
+                            <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
+                            <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
+                            <td class="border border-slate-300 text-right text_success">${new Intl.NumberFormat().format(x.actual)}</td>
+                            <td class="border border-slate-300 text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
                         </tr>`
             } else {
                 return `<tr class="text-[10px] md:text-[0.764vw] font-[600]">
@@ -119,14 +119,11 @@ const locationData = (product, productData) => {
     async function fetchDataAndReload() {
 
         // try {
-        //     const data = await dashboardApi.getAll();
-        //     console.log(data);
-
-        // } catch (error) {
-        //     console.log("failed to fetch data", error);
-        // }
+        //     const { data } = await dashboardApi.getAll();
+        // console.log(data.data);
 
         const data = dasboarddata;
+
         const PRODUCTS = [
             {
                 name: "mentos",
@@ -152,10 +149,11 @@ const locationData = (product, productData) => {
             const productData = dataOfEachProduct(PRODUCTS[i], data.areas);
             locationData(PRODUCTS[i], productData);
         }
+        // } catch (error) {
+        //     console.log("failed to fetch data", error);
+        // }
 
-        // console.log("refresh");
-
-        setTimeout(fetchDataAndReload, 10000);
+        setTimeout(fetchDataAndReload, 5000);
     }
 
     fetchDataAndReload();
