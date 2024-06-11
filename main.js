@@ -100,7 +100,7 @@ const locationData = (product, productData) => {
 
 (() => {
 
-
+    // console.log(navigator.onLine);
     const dateEle = document.querySelector(".header-content .right .date");
     if (dateEle) {
         dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
@@ -117,41 +117,52 @@ const locationData = (product, productData) => {
     countTime();
 
     async function fetchDataAndReload() {
-
-        // try {
-        //     const { data } = await dashboardApi.getAll();
-        // console.log(data.data);
-
-        const data = dasboarddata;
-
-        const PRODUCTS = [
-            {
-                name: "mentos",
-                semi: 0,
-                fg: 1
-            },
-            {
-                name: "gum",
-                semi: 0,
-                fg: 1
-            }
-        ];
-
-        initLoadCountData("semi-target", data.semiTotalTarget, data.semiStatus);
-        initLoadCountData("semi-actual", data.semiActual, data.semiStatus);
-        initLoadCountData("semi-diff", data.semiDifferent, data.semiStatus);
-
-        initLoadCountData("fg-target", data.finishTotalTarget, data.finishStatus);
-        initLoadCountData("fg-actual", data.finishActual, data.finishStatus);
-        initLoadCountData("fg-diff", data.finishDifferent, data.finishStatus);
-
-        for (let i = 0; i < PRODUCTS.length; i++) {
-            const productData = dataOfEachProduct(PRODUCTS[i], data.areas);
-            locationData(PRODUCTS[i], productData);
-        }
-        // } catch (error) {
-        //     console.log("failed to fetch data", error);
+        // if (navigator.onLine) {
+        //     const errorEle = document.querySelector(".error");
+        //     if (errorEle) {
+        //         errorEle.classList.add("hidden");
+        //     }
+        // } else {
+        //     const errorEle = document.querySelector(".error");
+        //     if (errorEle) {
+        //         errorEle.classList.remove("hidden");
+        //     }
         // }
+
+        try {
+            const { data } = await dashboardApi.getAll();
+            // console.log(data.data);
+
+            // const data = dasboarddata;
+
+            const PRODUCTS = [
+                {
+                    name: "mentos",
+                    semi: 0,
+                    fg: 1
+                },
+                {
+                    name: "gum",
+                    semi: 0,
+                    fg: 1
+                }
+            ];
+
+            initLoadCountData("semi-target", data.semiTotalTarget, data.semiStatus);
+            initLoadCountData("semi-actual", data.semiActual, data.semiStatus);
+            initLoadCountData("semi-diff", data.semiDifferent, data.semiStatus);
+
+            initLoadCountData("fg-target", data.finishTotalTarget, data.finishStatus);
+            initLoadCountData("fg-actual", data.finishActual, data.finishStatus);
+            initLoadCountData("fg-diff", data.finishDifferent, data.finishStatus);
+
+            for (let i = 0; i < PRODUCTS.length; i++) {
+                const productData = dataOfEachProduct(PRODUCTS[i], data.areas);
+                locationData(PRODUCTS[i], productData);
+            }
+        } catch (error) {
+            console.log("failed to fetch data", error);
+        }
 
         setTimeout(fetchDataAndReload, 5000);
     }
