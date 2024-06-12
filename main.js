@@ -34,8 +34,8 @@ const addMoreLine = (data, type) => {
 
 const initLoadCountData = (element, data, status) => {
     const htmlEle = document.getElementById(element);
-    htmlEle.classList.remove("text_danger", "text_success");
     if (htmlEle) {
+        htmlEle.classList.remove("text_danger", "text_success");
         htmlEle.textContent = new Intl.NumberFormat().format(data);
         if (!element.includes("target")) {
             if ((status).toString() === "1") {
