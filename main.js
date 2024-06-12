@@ -54,7 +54,7 @@ const initLoadDataEachLocation = (data, rootElement, product) => {
     if (tbody) {
         let trEle = data.map((x) => {
             if ((x.status).toString() === "1") {
-                return `<tr class="text-[10px] md:text-[0.764vw] font-[600]">
+                return `<tr class="text-[10px] md:text-[0.764vw] font-[600] dark:text-text-white">
                             <td class="border border-slate-300 h-[35px] md:h-[2.083vw] status_danger"></td>
                             <td class="border border-slate-300">${x.name}</td>
                             <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
@@ -63,7 +63,7 @@ const initLoadDataEachLocation = (data, rootElement, product) => {
                             <td class="border border-slate-300 text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
                         </tr>`
             } else if ((x.status).toString() === "0") {
-                return `<tr class="text-[10px] md:text-[0.764vw] font-[600]">
+                return `<tr class="text-[10px] md:text-[0.764vw] font-[600] dark:text-text-white">
                             <td class="border border-slate-300 h-[35px] md:h-[2.083vw] bg-success"></td>
                             <td class="border border-slate-300">${x.name}</td>
                             <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
@@ -72,7 +72,7 @@ const initLoadDataEachLocation = (data, rootElement, product) => {
                             <td class="border border-slate-300 text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
                         </tr>`
             } else {
-                return `<tr class="text-[10px] md:text-[0.764vw] font-[600]">
+                return `<tr class="text-[10px] md:text-[0.764vw] font-[600] dark:text-text-white">
                         <td class="border border-slate-300 h-[35px] md:h-[2.083vw]"></td>
                         <td class="border border-slate-300">${x.name}</td>
                         <td class="border border-slate-300 text-right">${x.totalTarget}</td>

@@ -51,7 +51,7 @@ h6 {
 
 :root {
     --success: #00ff1b;
-    --danger: #d60d0d;
+    --danger: #ff0000;
     --normal: #ebf10a;
 }
 
@@ -87,13 +87,13 @@ body {
 }
 
 .text_danger {
-    color: var(--danger);
+    color: var(--danger) !important;
 }
 
 .text_normal {
-    color: var(--normal);
+    color: var(--normal) !important;
 }
 
 .text_success {
-    color: var(--success);
+    color: var(--success) !important;
 }

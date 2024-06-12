@@ -201,8 +201,13 @@ const renderChart = (location, numberOfChart) => {
                     data: [],
                     backgroundColor: [
                         '#00ff1b',
-                        '#d60d0d',
+                        '#ff0000',
                     ],
+                    // elements: {
+                    //     arc: {
+                    //         borderWidth: 0
+                    //     }
+                    // }
                 }]
             };
 
