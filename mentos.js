@@ -197,7 +197,7 @@ const renderChart = (location, numberOfChart) => {
                 // ],
                 datasets: [{
                     label: 'D-line',
-                    data: [],
+                    data: [50, 50],
                     backgroundColor: [
                         '#00ff1b',
                         '#ff0000',
@@ -248,25 +248,25 @@ const renderChart = (location, numberOfChart) => {
 
     countTime();
 
-    async function loadData() {
+    // async function loadData() {
 
-        try {
-            const { data } = await dashboardApi.getMentos();
-            // console.log(data);
-            // const data = mentosDetail;
+    //     try {
+    //         const { data } = await dashboardApi.getMentos();
+    //         // console.log(data);
+    //         // const data = mentosDetail;
 
-            initLoadCountData("target", data.totalTarget, data.status);
-            initLoadCountData("actual", data.actual, data.status);
-            initLoadCountData("diff", data.different, data.status);
+    //         initLoadCountData("target", data.totalTarget, data.status);
+    //         initLoadCountData("actual", data.actual, data.status);
+    //         initLoadCountData("diff", data.different, data.status);
 
-            initLoadData(data.locations);
+    //         initLoadData(data.locations);
 
-        } catch (error) {
-            console.log("failed to fetch data", error);
-        }
+    //     } catch (error) {
+    //         console.log("failed to fetch data", error);
+    //     }
 
-        setTimeout(loadData, 5000);
-    }
+    //     setTimeout(loadData, 5000);
+    // }
 
     loadData();
 
