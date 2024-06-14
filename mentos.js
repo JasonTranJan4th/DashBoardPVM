@@ -65,6 +65,9 @@ const initLoadDataEachLocation = (data, element, location) => {
 
             const percent = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .top .chart span`);
             if (percent) {
+                if (x.actual == x.totalTarget) {
+                    percent.textContent = `100%`;
+                }
                 percent.textContent = `${(Math.round((x.actual / x.totalTarget) * 100))}%`;
             }
 
@@ -197,10 +200,10 @@ const renderChart = (location, numberOfChart) => {
                 // ],
                 datasets: [{
                     label: 'D-line',
-                    data: [50, 50],
+                    data: [],
                     backgroundColor: [
-                        '#00ff1b',
-                        '#ff0000',
+                        '#1cb656',
+                        '#fb0000',
                     ],
                 }]
             };
@@ -234,7 +237,7 @@ const renderChart = (location, numberOfChart) => {
     renderChart("semi", 4);
     renderChart("fg", 7);
     /**
-     * note: API gửi lên bao nhiêu item thì rederChart sẽ phải render bấy nhiêu item
+     * note: API gửi lên bao nhiêu item thì renderChart sẽ phải render bấy nhiêu item
      */
 
     function countTime() {
@@ -248,25 +251,25 @@ const renderChart = (location, numberOfChart) => {
 
     countTime();
 
-    // async function loadData() {
+    async function loadData() {
 
-    //     try {
-    //         const { data } = await dashboardApi.getMentos();
-    //         // console.log(data);
-    //         // const data = mentosDetail;
+        try {
+            const { data } = await dashboardApi.getMentos();
+            // console.log(data);
+            // const data = mentosDetail;
 
-    //         initLoadCountData("target", data.totalTarget, data.status);
-    //         initLoadCountData("actual", data.actual, data.status);
-    //         initLoadCountData("diff", data.different, data.status);
+            initLoadCountData("target", data.totalTarget, data.status);
+            initLoadCountData("actual", data.actual, data.status);
+            initLoadCountData("diff", data.different, data.status);
 
-    //         initLoadData(data.locations);
+            initLoadData(data.locations);
 
-    //     } catch (error) {
-    //         console.log("failed to fetch data", error);
-    //     }
+        } catch (error) {
+            console.log("failed to fetch data", error);
+        }
 
-    //     setTimeout(loadData, 5000);
-    // }
+        setTimeout(loadData, 5000);
+    }
 
     loadData();
 

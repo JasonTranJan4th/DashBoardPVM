@@ -5,12 +5,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-color': '#0a2e5ed0',
-        // 'primary-color': '#1F1F1F',
+        'primary-color': '#012060',
+        'black-color': '#1F1F1F',
         'secondary-color': '#e3e3e3',
         'text-white': '#ffffff',
-        'success': '#00ff1b',
-        'danger': '#d60d0d',
+        'success': '#02b365',
+        'danger': '#fb0003',
         'normal': '#ebf10a',
         'dark-grey': '#444444'
       }

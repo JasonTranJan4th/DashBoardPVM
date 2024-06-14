@@ -55,30 +55,30 @@ const initLoadDataEachLocation = (data, rootElement, product) => {
         let trEle = data.map((x) => {
             if ((x.status).toString() === "1") {
                 return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                            <td class="border border-slate-300 h-[35px] md:h-[2.083vw] status_danger"></td>
-                            <td class="border border-slate-300">${x.name}</td>
-                            <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
-                            <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
-                            <td class="border border-slate-300 text-right text_danger">${new Intl.NumberFormat().format(x.actual)}</td>
-                            <td class="border border-slate-300 text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
+                            <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] status_danger"></td>
+                            <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+                            <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
+                            <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
+                            <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.actual)}</td>
+                            <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
                         </tr>`
             } else if ((x.status).toString() === "0") {
                 return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                            <td class="border border-slate-300 h-[35px] md:h-[2.083vw] bg-success"></td>
-                            <td class="border border-slate-300">${x.name}</td>
-                            <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
-                            <td class="border border-slate-300 text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
-                            <td class="border border-slate-300 text-right text_success">${new Intl.NumberFormat().format(x.actual)}</td>
-                            <td class="border border-slate-300 text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
+                            <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] bg-success"></td>
+                            <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+                            <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
+                            <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
+                            <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.actual)}</td>
+                            <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
                         </tr>`
             } else {
                 return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                        <td class="border border-slate-300 h-[35px] md:h-[2.083vw]"></td>
-                        <td class="border border-slate-300">${x.name}</td>
-                        <td class="border border-slate-300 text-right">${x.totalTarget}</td>
-                        <td class="border border-slate-300 text-right">${x.hourlyTarget}</td>
-                        <td class="border border-slate-300 text-right">${x.actual}</td>
-                        <td class="border border-slate-300 text-right">${x.different}</td>
+                        <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
+                        <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+                        <td class="border border-slate-300 dark:border-black-color text-right">${x.totalTarget}</td>
+                        <td class="border border-slate-300 dark:border-black-color text-right">${x.hourlyTarget}</td>
+                        <td class="border border-slate-300 dark:border-black-color text-right">${x.actual}</td>
+                        <td class="border border-slate-300 dark:border-black-color text-right">${x.different}</td>
                     </tr>`
             }
 
@@ -116,57 +116,57 @@ const locationData = (product, productData) => {
 
     countTime();
 
-    // async function fetchDataAndReload() {
-    //     // if (navigator.onLine) {
-    //     //     const errorEle = document.querySelector(".error");
-    //     //     if (errorEle) {
-    //     //         errorEle.classList.add("hidden");
-    //     //     }
-    //     // } else {
-    //     //     const errorEle = document.querySelector(".error");
-    //     //     if (errorEle) {
-    //     //         errorEle.classList.remove("hidden");
-    //     //     }
-    //     // }
+    async function fetchDataAndReload() {
+        // if (navigator.onLine) {
+        //     const errorEle = document.querySelector(".error");
+        //     if (errorEle) {
+        //         errorEle.classList.add("hidden");
+        //     }
+        // } else {
+        //     const errorEle = document.querySelector(".error");
+        //     if (errorEle) {
+        //         errorEle.classList.remove("hidden");
+        //     }
+        // }
 
-    //     try {
-    //         const { data } = await dashboardApi.getAll();
-    //         // console.log(data.data);
+        try {
+            const { data } = await dashboardApi.getAll();
+            // console.log(data.data);
 
-    //         // const data = dasboarddata;
+            // const data = dasboarddata;
 
-    //         const PRODUCTS = [
-    //             {
-    //                 name: "mentos",
-    //                 semi: 0,
-    //                 fg: 1
-    //             },
-    //             {
-    //                 name: "gum",
-    //                 semi: 0,
-    //                 fg: 1
-    //             }
-    //         ];
+            const PRODUCTS = [
+                {
+                    name: "mentos",
+                    semi: 0,
+                    fg: 1
+                },
+                {
+                    name: "gum",
+                    semi: 0,
+                    fg: 1
+                }
+            ];
 
-    //         initLoadCountData("semi-target", data.semiTotalTarget, data.semiStatus);
-    //         initLoadCountData("semi-actual", data.semiActual, data.semiStatus);
-    //         initLoadCountData("semi-diff", data.semiDifferent, data.semiStatus);
+            initLoadCountData("semi-target", data.semiTotalTarget, data.semiStatus);
+            initLoadCountData("semi-actual", data.semiActual, data.semiStatus);
+            initLoadCountData("semi-diff", data.semiDifferent, data.semiStatus);
 
-    //         initLoadCountData("fg-target", data.finishTotalTarget, data.finishStatus);
-    //         initLoadCountData("fg-actual", data.finishActual, data.finishStatus);
-    //         initLoadCountData("fg-diff", data.finishDifferent, data.finishStatus);
+            initLoadCountData("fg-target", data.finishTotalTarget, data.finishStatus);
+            initLoadCountData("fg-actual", data.finishActual, data.finishStatus);
+            initLoadCountData("fg-diff", data.finishDifferent, data.finishStatus);
 
-    //         for (let i = 0; i < PRODUCTS.length; i++) {
-    //             const productData = dataOfEachProduct(PRODUCTS[i], data.areas);
-    //             locationData(PRODUCTS[i], productData);
-    //         }
-    //     } catch (error) {
-    //         console.log("failed to fetch data", error);
-    //     }
+            for (let i = 0; i < PRODUCTS.length; i++) {
+                const productData = dataOfEachProduct(PRODUCTS[i], data.areas);
+                locationData(PRODUCTS[i], productData);
+            }
+        } catch (error) {
+            console.log("failed to fetch data", error);
+        }
 
-    //     setTimeout(fetchDataAndReload, 5000);
-    // }
+        setTimeout(fetchDataAndReload, 5000);
+    }
 
-    // fetchDataAndReload();
+    fetchDataAndReload();
 
 })();
