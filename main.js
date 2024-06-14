@@ -100,13 +100,25 @@ const locationData = (product, productData) => {
 
 (() => {
 
-    // console.log(navigator.onLine);
     const dateEle = document.querySelector(".header-content .right .date");
     if (dateEle) {
         dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
     }
 
     function countTime() {
+
+        if (navigator.onLine.toString() === "false") {
+            const errorEle = document.querySelector(".error");
+            if (errorEle) {
+                errorEle.classList.remove("hidden");
+            }
+        } else {
+            const errorEle = document.querySelector(".error");
+            if (errorEle) {
+                errorEle.classList.add("hidden");
+            }
+        }
+
         const timeEle = document.querySelector(".header-content .right .time");
         if (timeEle) {
             timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
@@ -117,18 +129,6 @@ const locationData = (product, productData) => {
     countTime();
 
     async function fetchDataAndReload() {
-        // if (navigator.onLine) {
-        //     const errorEle = document.querySelector(".error");
-        //     if (errorEle) {
-        //         errorEle.classList.add("hidden");
-        //     }
-        // } else {
-        //     const errorEle = document.querySelector(".error");
-        //     if (errorEle) {
-        //         errorEle.classList.remove("hidden");
-        //     }
-        // }
-
         try {
             const { data } = await dashboardApi.getAll();
             // console.log(data.data);

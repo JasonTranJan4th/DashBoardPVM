@@ -241,6 +241,19 @@ const renderChart = (location, numberOfChart) => {
      */
 
     function countTime() {
+
+        if (navigator.onLine.toString() === "false") {
+            const errorEle = document.querySelector(".error");
+            if (errorEle) {
+                errorEle.classList.remove("hidden");
+            }
+        } else {
+            const errorEle = document.querySelector(".error");
+            if (errorEle) {
+                errorEle.classList.add("hidden");
+            }
+        }
+
         const timeEle = document.querySelector(".header-content .right .time");
         if (timeEle) {
             timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
