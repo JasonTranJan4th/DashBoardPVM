@@ -244,6 +244,17 @@ const renderChart = (location, numberOfChart) => {
     renderChart("fg", 9);
 
     function countTime() {
+        const timeEle = document.querySelector(".header-content .right .time");
+        if (timeEle) {
+            timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
+        }
+
+        setTimeout(countTime, 1000);
+    }
+
+    countTime();
+
+    async function loadData() {
 
         if (navigator.onLine.toString() === "false") {
             const errorEle = document.querySelector(".error");
@@ -256,18 +267,6 @@ const renderChart = (location, numberOfChart) => {
                 errorEle.classList.add("hidden");
             }
         }
-
-        const timeEle = document.querySelector(".header-content .right .time");
-        if (timeEle) {
-            timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
-        }
-
-        setTimeout(countTime, 1000);
-    }
-
-    countTime();
-
-    async function loadData() {
 
         try {
             const { data } = await dashboardApi.getGum();
