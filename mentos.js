@@ -169,7 +169,14 @@ const initLoadDataEachLocation = (data, element, location) => {
             //         `
             // }
 
-            const chartData = [x.actual, x.totalTarget - x.actual];
+            let chartData = [];
+            if (x.actual >= x.totalTarget) {
+                chartData = [100, 0];
+            } else {
+                chartData = [x.actual, x.totalTarget - x.actual]
+            }
+
+            // const chartData = [x.actual, x.totalTarget - x.actual];
 
             const chart = Chart.getChart(`${location}_${index + 1}`);
             chart.config.data.datasets[0].data = chartData;
