@@ -65,10 +65,15 @@ const initLoadDataEachLocation = (data, element, location) => {
 
             const percent = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .top .chart span`);
             if (percent) {
-                if (x.actual == x.totalTarget) {
-                    percent.textContent = `100%`;
+                if (x.actual == 0 || x.totalTarget == 0) {
+                    percent.textContent = `0%`;
+                } else {
+                    if (x.actual == x.totalTarget) {
+                        percent.textContent = `100%`;
+                    }
+                    percent.textContent = `${(Math.round((x.actual / x.totalTarget) * 100))}%`;
                 }
-                percent.textContent = `${(Math.round((x.actual / x.totalTarget) * 100))}%`;
+
             }
 
             const target = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(1) h4:nth-child(2)`);

@@ -53,34 +53,74 @@ const initLoadDataEachLocation = (data, rootElement, product) => {
     // console.log(tbody)
     if (tbody) {
         let trEle = data.map((x) => {
-            if ((x.status).toString() === "1") {
+            if (x.enabled === false) {
                 return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                            <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] status_danger"></td>
-                            <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-                            <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
-                            <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
-                            <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.actual)}</td>
-                            <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
-                        </tr>`
-            } else if ((x.status).toString() === "0") {
-                return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                            <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] bg-success"></td>
-                            <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-                            <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
-                            <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
-                            <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.actual)}</td>
-                            <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
-                        </tr>`
+                <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
+                <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+                <td class="border border-slate-300 dark:border-black-color text-right">-</td>
+                <td class="border border-slate-300 dark:border-black-color text-right">-</td>
+                <td class="border border-slate-300 dark:border-black-color text-right">-</td>
+                <td class="border border-slate-300 dark:border-black-color text-right">-</td>
+            </tr>`
             } else {
-                return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                        <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                        <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-                        <td class="border border-slate-300 dark:border-black-color text-right">${x.totalTarget}</td>
-                        <td class="border border-slate-300 dark:border-black-color text-right">${x.hourlyTarget}</td>
-                        <td class="border border-slate-300 dark:border-black-color text-right">${x.actual}</td>
-                        <td class="border border-slate-300 dark:border-black-color text-right">${x.different}</td>
-                    </tr>`
+                if ((x.status).toString() === "1") {
+                    return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
+                                    <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] status_danger"></td>
+                                    <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+                                    <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
+                                    <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
+                                    <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.actual)}</td>
+                                    <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
+                                </tr>`
+                } else if ((x.status).toString() === "0") {
+                    return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
+                                    <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] bg-success"></td>
+                                    <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+                                    <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
+                                    <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
+                                    <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.actual)}</td>
+                                    <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
+                                </tr>`
+                } else {
+                    return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
+                                <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
+                                <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+                                <td class="border border-slate-300 dark:border-black-color text-right">${x.totalTarget}</td>
+                                <td class="border border-slate-300 dark:border-black-color text-right">${x.hourlyTarget}</td>
+                                <td class="border border-slate-300 dark:border-black-color text-right">${x.actual}</td>
+                                <td class="border border-slate-300 dark:border-black-color text-right">${x.different}</td>
+                            </tr>`
+                }
             }
+
+            // if ((x.status).toString() === "1") {
+            //     return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
+            //                 <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] status_danger"></td>
+            //                 <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+            //                 <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
+            //                 <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
+            //                 <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.actual)}</td>
+            //                 <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
+            //             </tr>`
+            // } else if ((x.status).toString() === "0") {
+            //     return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
+            //                 <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] bg-success"></td>
+            //                 <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+            //                 <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
+            //                 <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
+            //                 <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.actual)}</td>
+            //                 <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
+            //             </tr>`
+            // } else {
+            //     return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
+            //             <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
+            //             <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
+            //             <td class="border border-slate-300 dark:border-black-color text-right">${x.totalTarget}</td>
+            //             <td class="border border-slate-300 dark:border-black-color text-right">${x.hourlyTarget}</td>
+            //             <td class="border border-slate-300 dark:border-black-color text-right">${x.actual}</td>
+            //             <td class="border border-slate-300 dark:border-black-color text-right">${x.different}</td>
+            //         </tr>`
+            // }
 
         }).join("");
         tbody.innerHTML = trEle;
@@ -132,7 +172,7 @@ const locationData = (product, productData) => {
 
         try {
             const { data } = await dashboardApi.getAll();
-            // console.log(data.data);
+            // console.log(data);
 
             // const data = dasboarddata;
 
