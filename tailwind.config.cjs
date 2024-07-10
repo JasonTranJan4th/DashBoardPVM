@@ -13,6 +13,9 @@ export default {
         'danger': '#fb0003',
         'normal': '#ebf10a',
         'dark-grey': '#444444'
+      },
+      screens: {
+        'xs': '390px',
       }
     },
   },

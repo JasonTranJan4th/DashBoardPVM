@@ -140,74 +140,125 @@ const locationData = (product, productData) => {
 
 (() => {
 
-    const dateEle = document.querySelector(".header-content .right .date");
-    if (dateEle) {
-        dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
-    }
+    const key = JSON.parse(localStorage.getItem("key"));
+    if (key) {
 
-    function countTime() {
-        const timeEle = document.querySelector(".header-content .right .time");
-        if (timeEle) {
-            timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
-        }
-        setTimeout(countTime, 1000);
-    }
+        const loggedUser = JSON.parse(localStorage.getItem("user"));
 
-    countTime();
+        const contentEle = document.querySelector(".wrapper");
+        contentEle.classList.remove("hidden");
 
-    async function fetchDataAndReload() {
+        const logoEle = document.querySelector(".logo");
+        if (logoEle) {
+            logoEle.addEventListener("click", () => {
+                const sidebarEle = document.querySelector(".sidebar");
+                if (sidebarEle) {
+                    sidebarEle.classList.toggle("hidden");
 
-        if (navigator.onLine.toString() === "false") {
-            const errorEle = document.querySelector(".error");
-            if (errorEle) {
-                errorEle.classList.remove("hidden");
-            }
-        } else {
-            const errorEle = document.querySelector(".error");
-            if (errorEle) {
-                errorEle.classList.add("hidden");
-            }
-        }
+                    const loggedUserEle = document.querySelector(".logged_user");
+                    if (loggedUserEle) {
+                        loggedUserEle.textContent = `${loggedUser.username}`;
+                    }
 
-
-        try {
-            const { data } = await dashboardApi.getAll();
-            // console.log(data);
-
-            // const data = dasboarddata;
-
-            const PRODUCTS = [
-                {
-                    name: "mentos",
-                    semi: 0,
-                    fg: 1
-                },
-                {
-                    name: "gum",
-                    semi: 0,
-                    fg: 1
+                    const logOutBtn = document.querySelector(".logout");
+                    if (logOutBtn) {
+                        logOutBtn.addEventListener("click", () => {
+                            window.localStorage.clear("key");
+                            window.localStorage.clear("user");
+                            window.location.reload();
+                        })
+                    }
                 }
-            ];
-
-            initLoadCountData("semi-target", data.semiTotalTarget, data.semiStatus);
-            initLoadCountData("semi-actual", data.semiActual, data.semiStatus);
-            initLoadCountData("semi-diff", data.semiDifferent, data.semiStatus);
-
-            initLoadCountData("fg-target", data.finishTotalTarget, data.finishStatus);
-            initLoadCountData("fg-actual", data.finishActual, data.finishStatus);
-            initLoadCountData("fg-diff", data.finishDifferent, data.finishStatus);
-
-            for (let i = 0; i < PRODUCTS.length; i++) {
-                const productData = dataOfEachProduct(PRODUCTS[i], data.areas);
-                locationData(PRODUCTS[i], productData);
-            }
-        } catch (error) {
-            console.log("failed to fetch data", error);
+            })
         }
 
-        setTimeout(fetchDataAndReload, 5000);
-    }
+        const dateEle = document.querySelector(".header-content .right .date");
+        if (dateEle) {
+            dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
+        }
 
-    fetchDataAndReload();
+        function countTime() {
+            const timeEle = document.querySelector(".header-content .right .time");
+            const shiftEle = document.querySelector(".header-content .left .shift");
+
+            if (timeEle) {
+                timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
+            }
+
+            if (shiftEle) {
+                const d = new Date();
+                const hour = d.getHours();
+
+                if (hour >= 6 && hour < 14) {
+                    shiftEle.textContent = "Shift 1";
+                } else if (hour >= 14 && hour < 22) {
+                    shiftEle.textContent = "Shift 2";
+                } else {
+                    shiftEle.textContent = "Shift 3";
+                }
+            }
+
+            setTimeout(countTime, 1000);
+        }
+
+        countTime();
+
+        async function fetchDataAndReload() {
+
+            if (navigator.onLine.toString() === "false") {
+                const errorEle = document.querySelector(".error");
+                if (errorEle) {
+                    errorEle.classList.remove("hidden");
+                }
+            } else {
+                const errorEle = document.querySelector(".error");
+                if (errorEle) {
+                    errorEle.classList.add("hidden");
+                }
+            }
+
+
+            try {
+                const { data } = await dashboardApi.getAll({ "thinknext_key": key });
+                // console.log(data);
+
+                // const data = dasboarddata;
+
+                const PRODUCTS = [
+                    {
+                        name: "mentos",
+                        semi: 0,
+                        fg: 1
+                    },
+                    {
+                        name: "gum",
+                        semi: 0,
+                        fg: 1
+                    }
+                ];
+
+                initLoadCountData("semi-target", data.semiTotalTarget, data.semiStatus);
+                initLoadCountData("semi-actual", data.semiActual, data.semiStatus);
+                initLoadCountData("semi-diff", data.semiDifferent, data.semiStatus);
+
+                initLoadCountData("fg-target", data.finishTotalTarget, data.finishStatus);
+                initLoadCountData("fg-actual", data.finishActual, data.finishStatus);
+                initLoadCountData("fg-diff", data.finishDifferent, data.finishStatus);
+
+                for (let i = 0; i < PRODUCTS.length; i++) {
+                    const productData = dataOfEachProduct(PRODUCTS[i], data.areas);
+                    locationData(PRODUCTS[i], productData);
+                }
+            } catch (error) {
+                console.log("failed to fetch data", error);
+            }
+
+            setTimeout(fetchDataAndReload, 5000);
+        }
+
+        fetchDataAndReload();
+    } else {
+        window.location.assign("login.html");
+    }
 
 })();

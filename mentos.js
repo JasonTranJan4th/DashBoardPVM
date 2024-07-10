@@ -170,11 +170,15 @@ const initLoadDataEachLocation = (data, element, location) => {
             // }
 
             let chartData = [];
-            if (x.actual >= x.totalTarget) {
-                chartData = [100, 0];
-            } else {
-                chartData = [x.actual, x.totalTarget - x.actual]
+            if (x.actual == 0 || x.totalTarget == 0) {
+                chartData = [];
             }
+            else
+                if (x.actual >= x.totalTarget) {
+                    chartData = [100, 0];
+                } else {
+                    chartData = [x.actual, x.totalTarget - x.actual]
+                }
 
             // const chartData = [x.actual, x.totalTarget - x.actual];
 
@@ -241,60 +245,95 @@ const renderChart = (location, numberOfChart) => {
 
 (() => {
 
-    const dateEle = document.querySelector(".header-content .right .date");
-    if (dateEle) {
-        dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
-    }
+    const key = JSON.parse(localStorage.getItem("key"));
+    if (key) {
 
-    renderChart("semi", 4);
-    renderChart("fg", 7);
-    /**
-     * note: API gửi lên bao nhiêu item thì renderChart sẽ phải render bấy nhiêu item
-     */
+        const loggedUser = JSON.parse(localStorage.getItem("user"));
 
-    function countTime() {
-        const timeEle = document.querySelector(".header-content .right .time");
-        if (timeEle) {
-            timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
+        const contentEle = document.querySelector(".wrapper");
+        contentEle.classList.remove("hidden");
+
+        const logoEle = document.querySelector(".logo");
+        if (logoEle) {
+            logoEle.addEventListener("click", () => {
+                const sidebarEle = document.querySelector(".sidebar");
+                if (sidebarEle) {
+                    sidebarEle.classList.toggle("hidden");
+
+                    const loggedUserEle = document.querySelector(".logged_user");
+                    if (loggedUserEle) {
+                        loggedUserEle.textContent = `${loggedUser.username}`;
+                    }
+
+                    const logOutBtn = document.querySelector(".logout");
+                    if (logOutBtn) {
+                        logOutBtn.addEventListener("click", () => {
+                            window.localStorage.clear("key");
+                            window.localStorage.clear("user");
+                            window.location.reload();
+                        })
+                    }
+                }
+            })
         }
 
-        setTimeout(countTime, 1000);
-    }
+        const dateEle = document.querySelector(".header-content .right .date");
+        if (dateEle) {
+            dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
+        }
 
-    countTime();
+        renderChart("semi", 4);
+        renderChart("fg", 7);
+        /**
+         * note: API gửi lên bao nhiêu item thì renderChart sẽ phải render bấy nhiêu item
+         */
 
-    async function loadData() {
-
-        if (navigator.onLine.toString() === "false") {
-            const errorEle = document.querySelector(".error");
-            if (errorEle) {
-                errorEle.classList.remove("hidden");
+        function countTime() {
+            const timeEle = document.querySelector(".header-content .right .time");
+            if (timeEle) {
+                timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
             }
-        } else {
-            const errorEle = document.querySelector(".error");
-            if (errorEle) {
-                errorEle.classList.add("hidden");
+
+            setTimeout(countTime, 1000);
+        }
+
+        countTime();
+
+        async function loadData() {
+
+            if (navigator.onLine.toString() === "false") {
+                const errorEle = document.querySelector(".error");
+                if (errorEle) {
+                    errorEle.classList.remove("hidden");
+                }
+            } else {
+                const errorEle = document.querySelector(".error");
+                if (errorEle) {
+                    errorEle.classList.add("hidden");
+                }
             }
+
+            try {
+                const { data } = await dashboardApi.getMentos({ "thinknext_key": key });
+                // console.log(data);
+                // const data = mentosDetail;
+
+                initLoadCountData("target", data.totalTarget, data.status);
+                initLoadCountData("actual", data.actual, data.status);
+                initLoadCountData("diff", data.different, data.status);
+
+                initLoadData(data.locations);
+
+            } catch (error) {
+                console.log("failed to fetch data", error);
+            }
+
+            setTimeout(loadData, 5000);
         }
 
-        try {
-            const { data } = await dashboardApi.getMentos();
-            // console.log(data);
-            // const data = mentosDetail;
-
-            initLoadCountData("target", data.totalTarget, data.status);
-            initLoadCountData("actual", data.actual, data.status);
-            initLoadCountData("diff", data.different, data.status);
-
-            initLoadData(data.locations);
-
-        } catch (error) {
-            console.log("failed to fetch data", error);
-        }
-
-        setTimeout(loadData, 5000);
+        loadData();
+    } else {
+        window.location.assign("login.html");
     }
-
-    loadData();
 
 })();

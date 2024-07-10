@@ -2,17 +2,17 @@ import axiosClient from "./axiosClient";
 
 
 const dashboardApi = {
-    getAll() {
+    getAll(headers) {
         const url = "/dashboard";
-        return axiosClient.get(url);
+        return axiosClient.get(url, { headers: { ...headers } });
     },
-    getGum() {
+    getGum(headers) {
         const url = "/dashboard/1";
-        return axiosClient.get(url);
+        return axiosClient.get(url, { headers: { ...headers } });
     },
-    getMentos() {
+    getMentos(headers) {
         const url = "/dashboard/0";
-        return axiosClient.get(url);
+        return axiosClient.get(url, { headers: { ...headers } });
     }
 };
 

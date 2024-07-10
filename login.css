@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-size: 1.111vw;
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    outline: none;
+    border: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+:root {
+    --success: #05b259;
+    --danger: #fb0000;
+    --normal: #ebf10a;
+}
+
+body {
+    font-family: "Sora", sans-serif;
+    line-height: 1.5;
+}
