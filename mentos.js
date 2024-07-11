@@ -290,8 +290,23 @@ const renderChart = (location, numberOfChart) => {
 
         function countTime() {
             const timeEle = document.querySelector(".header-content .right .time");
+            const shiftEle = document.querySelector(".header-content .left .shift");
+
             if (timeEle) {
                 timeEle.textContent = `${dayjs(new Date()).format('HH:mm:ss')}`;
+            }
+
+            if (shiftEle) {
+                const d = new Date();
+                const hour = d.getHours();
+
+                if (hour >= 6 && hour < 14) {
+                    shiftEle.textContent = "Shift 1";
+                } else if (hour >= 14 && hour < 22) {
+                    shiftEle.textContent = "Shift 2";
+                } else {
+                    shiftEle.textContent = "Shift 3";
+                }
             }
 
             setTimeout(countTime, 1000);
