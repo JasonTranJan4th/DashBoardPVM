@@ -253,7 +253,7 @@ const renderChart = (location, numberOfChart) => {
         const contentEle = document.querySelector(".wrapper");
         contentEle.classList.remove("hidden");
 
-        const logoEle = document.querySelector(".logo");
+        const logoEle = document.querySelector(".user_logo");
         if (logoEle) {
             logoEle.addEventListener("click", () => {
                 const sidebarEle = document.querySelector(".sidebar");

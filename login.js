@@ -16,10 +16,13 @@ import userApi from "./api/userApi";
         }
 
         try {
+            const newFormValues = { ...formValues };
+            newFormValues.password = btoa(unescape(encodeURIComponent(newFormValues.password)));
+
             const { data } = await userApi.getUser(formValues);
 
             if (data) {
-                window.localStorage.setItem("user", JSON.stringify(formValues));
+                window.localStorage.setItem("user", JSON.stringify(newFormValues));
                 window.localStorage.setItem("key", JSON.stringify(data));
                 // const testdata = localStorage.getItem("user");
                 // console.log(JSON.parse(testdata));
