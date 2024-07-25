@@ -46,6 +46,41 @@
         </div>
       </div>
 
+      <nav aria-label="breadcrumb" class="w-max">
+        <ol class="flex flex-wrap items-center w-full px-1 py-1 rounded-md bg-blue-gray-50 bg-opacity-60">
+          <li id="nav-main"
+            class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+            <p class="opacity-60 hover:text-black text-black transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                </path>
+              </svg>
+            </p>
+            <span
+              class="mx-2 font-sans text-sm antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">
+              /
+            </span>
+          </li>
+          <li id="nav-mentos"
+            class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+            <p class="opacity-60 hover:text-black hover:font-semibold transition-colors">
+              <span>
+                Mentos
+              </span>
+            </p>
+            <span
+              class="mx-2 font-sans text-sm antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">/</span>
+          </li>
+          <li id="nav-gum"
+            class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+            <p class="opacity-60 hover:text-black hover:font-semibold transition-colors">
+              Gum
+            </p>
+          </li>
+        </ol>
+      </nav>
+
       <div class="count-semi flex items-center justify-between mt-[10px] md:mt-[0.347vw]">
         <div class="count-semi-target flex items-center justify-center">
           <h1 class="text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-black-color
@@ -87,569 +122,201 @@
         <div class="content-semi-body w-full grid grid-cols-1 gap-[5px] md:gap-[0.347vw] md:grid-cols-5">
 
           <div class="mentos">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Mentos</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">D-Line</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Mentos
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">H-Line</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
+                </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Coating 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="semi_gauge_1"></canvas>
+                    <!-- top-[60%] w-full text-center -->
+                    <!-- z-[2] top-[60%] left-[35%] -->
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">3pcs/4pcs</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="semi_1"></canvas>
+              </div>
+            </div>
           </div>
 
           <div class="gum">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Gum</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Coating Gum</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Gum
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Lamination</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Executive line 1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="semi_gauge_2"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Executive line 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Eurocisma BB</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Bosch Sploosh</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Schib Mono 9</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Line Chock</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Schib (MFA)</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="semi_2"></canvas>
+              </div>
+            </div>
           </div>
 
-          <div class="candy">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Candy</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Mixer</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+          <div class="candy opacity-0">
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Candy
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">2Chew Mono</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Lolipop</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="semi_gauge_3"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white ">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="semi_3"></canvas>
+              </div>
+            </div>
           </div>
 
-          <div class="chupa">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Chupa-Melody</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Chupa Line #1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+          <div class="chupa opacity-0">
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Chupa-Melody
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Chupa Line #2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Dip&Lick</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="semi_gauge_4"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Barcoding 1 & 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Forming</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">BZW 1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">BZW 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Flowpack</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="semi_4"></canvas>
+              </div>
+            </div>
           </div>
 
-          <div class="jelly">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Jelly</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">IMAR</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+          <div class="jelly opacity-0">
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Jelly
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Multipond #1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Multipond #2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="semi_gauge_5"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="semi_5"></canvas>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
 
-      <div class="count-finished flex items-center justify-between mt-[10px] md:mt-[0.347vw]">
+      <div class="count-finished flex items-center justify-between mt-[10px] md:mt-20">
         <div class="count-finished-target flex items-center justify-center">
           <h1 class="text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-black-color
             ">
@@ -688,563 +355,193 @@
         <div class="content-finished-body w-full grid grid-cols-1 gap-[5px] md:gap-[0.347vw] md:grid-cols-5">
 
           <div class="mentos">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Mentos</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">AWS 2000</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Mentos
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">AWS 4000</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Mentos Pouching 1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="fg_gauge_1"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Mentos Pouching 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Outer Mini</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Cup</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Pouching 3</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="fg_1"></canvas>
+              </div>
+            </div>
           </div>
 
           <div class="gum">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Gum</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">3D</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Gum
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Bosch Bipack 1 & 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Auto Bottle line 1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="fg_gauge_2"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Auto Bottle line 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Blister 1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Blister 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Blister 3</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Pellet Stick</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Roll Stick</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="fg_2"></canvas>
+              </div>
+            </div>
           </div>
 
-          <div class="candy">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Candy</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">2Chew Stick</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+          <div class="candy opacity-0">
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Candy
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Incredible Chew</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Pouching 1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="fg_gauge_3"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Pouching 4</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Golia Stick</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Alpenliebe Stick</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">3-pack</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="fg_3"></canvas>
+              </div>
+            </div>
           </div>
 
-          <div class="chupa">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Chupa-Melody</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Pouching 2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+          <div class="chupa opacity-0">
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Chupa-Melody
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Pouching 3</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Chupa Flowpack</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="fg_gauge_4"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="fg_4"></canvas>
+              </div>
+            </div>
           </div>
 
-          <div class="jelly">
-            <table class="border-collapse border border-slate-300 dark:border-black-color w-full">
-              <thead>
-                <tr class="bg-primary-color dark:bg-black-color text-text-white">
-                  <th
-                    class="borber border-slate-300 dark:border-black-color border-r-0 w-[20px] h-[35px] md:w-[0.486vw] md:h-[2.431vw]">
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color border-l-0 w-[150px] md:w-[6.944vw] text-[10px] md:text-[0.764vw]">
-                    Jelly</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[60px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Total Target
-                  </th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Hourly
-                    Target</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Actual</th>
-                  <th
-                    class="border border-slate-300 dark:border-black-color w-[50px] md:w-[2.778vw] text-[10px] md:text-[0.694vw]">
-                    Diff.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">IMAR</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+          <div class="jelly opacity-0">
+            <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+              <div class="top px-4 pt-4">
+                <h5
+                  class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                  Jelly
+                </h5>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Multipond #1</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+              <div class="center px-4 flex items-center justify-between relative">
+                <div class="trend">
+                  <h5
+                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                    Trend: <span class="percent text-green-500">1.25%</span>
+                  </h5>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color">Multipond #2</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                  <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                </tr>
+                </div>
+                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                  <div class="h-29 w-29 relative">
+                    <canvas id="fg_gauge_5"></canvas>
+                    <h5
+                      class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      0%
+                    </h5>
+                    <h5
+                      class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      000/000
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-                <tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                  <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                  <td class="border border-slate-300 dark:border-black-color"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                  <td class="border border-slate-300 dark:border-black-color text-right"></td>
-                </tr>
-
-              </tbody>
-            </table>
+              <div class="bottom px-2 pt-8 pb-2 w-full">
+                <canvas id="fg_5"></canvas>
+              </div>
+            </div>
           </div>
 
         </div>

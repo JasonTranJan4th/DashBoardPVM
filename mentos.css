@@ -64,7 +64,9 @@ body {
 }
 
 .wrapper {
-    padding: 0.694vw;
+    padding-top: 0.694vw;
+    padding-left: 0.694vw;
+    padding-right: 0.694vw;
     margin: 0 auto;
     font-size: 1.111vw;
 }

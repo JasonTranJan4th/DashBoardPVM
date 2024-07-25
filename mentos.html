@@ -44,12 +44,43 @@
                     <p class="time w-[5.700vw]">00:00:00</p>
                 </div>
             </div>
-            <!-- <div
-        class="header-detail max-w-[27.778vw] m-auto flex justify-between items-center mt-[0.347vw] text-primary-color font-[600]">
-        <p class="date">30-OCT-2023</p>
-        <p class="time">08:30:31</p>
-        <p class="orther uppercase">Shift 1</p>
-      </div> -->
+
+            <nav aria-label="breadcrumb" class="w-max">
+                <ol class="flex flex-wrap items-center w-full px-1 py-1 rounded-md bg-blue-gray-50 bg-opacity-60">
+                    <li id="nav-main"
+                        class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+                        <p class="opacity-60 hover:text-black transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                                </path>
+                            </svg>
+                        </p>
+                        <span
+                            class="mx-2 font-sans text-sm antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">
+                            /
+                        </span>
+                    </li>
+                    <li id="nav-mentos"
+                        class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+                        <p
+                            class="opacity-60 hover:text-black hover:font-semibold text-black font-semibold transition-colors">
+                            <span>
+                                Mentos
+                            </span>
+                        </p>
+                        <span
+                            class="mx-2 font-sans text-sm antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">/</span>
+                    </li>
+                    <li id="nav-gum"
+                        class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+                        <p class="opacity-60 hover:text-black hover:font-semibold transition-colors">
+                            Gum
+                        </p>
+                    </li>
+                </ol>
+            </nav>
 
             <div class="count flex items-center justify-between mt-[10px] md:mt-[0.694vw]">
                 <div class="count-target flex items-center justify-center">
@@ -95,189 +126,157 @@
                 </div>
 
                 <div
-                    class="content-semi-list mt-[0.694vw] mb-[0.694vw] flex flex-col md:flex-row w-full gap-[10px] md:gap-[2.431vw] md:pr-[0.694vw]">
+                    class="content-semi-list mt-[0.347vw] mb-[0.347vw] w-full grid grid-cols-1 gap-[5px] md:gap-[0.347vw] md:grid-cols-4">
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">D-line</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="semi_1"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                D-line
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="semi_gauge_1"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="semi_1" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">H-line</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="semi_2"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                H-line
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="semi_gauge_2"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="semi_2" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">Coasting 2</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="semi_3"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                Coating 2
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="semi_gauge_3"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="semi_3" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">3pcs/4pcs</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="semi_4"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                3pcs/4pcs
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="semi_gauge_4"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="semi_4" class="max-h-20"></canvas>
                         </div>
                     </div>
 
@@ -294,329 +293,271 @@
                 </div>
 
                 <div
-                    class="content-finished-list md:mt-[0.694vw] md:mb-[0.694vw] flex flex-col md:flex-row w-full gap-[10px] md:gap-[2.431vw] flex-wrap md:pr-[0.694vw]">
+                    class="content-semi-list mt-[0.347vw] mb-[0.347vw] w-full grid grid-cols-1 gap-[5px] md:gap-[0.347vw] md:grid-cols-4">
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">AWS 2000</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="fg_1"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                AWS 2000
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="fg_gauge_1"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="fg_1" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">AWS 4000</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="fg_2"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                AWS 4000
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="fg_gauge_2"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="fg_2" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">Mentos Pouching 1
-                            </h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="fg_3"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                Pouching 01
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="fg_gauge_3"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="fg_3" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">Mentos Pouching 2
-                            </h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="fg_4"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                Pouching 02
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="fg_gauge_4"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="fg_4" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">Outer Mini</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="fg_5"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                Outer Mini
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="fg_gauge_5"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="fg_5" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">Cup</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="fg_6"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                Cup
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="fg_gauge_6"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="fg_6" class="max-h-20"></canvas>
                         </div>
                     </div>
 
                     <div
                         class="content-item bg-white dark:bg-dark-grey rounded-xl px-[5px] py-[5px] mx-[10px] my-[10px] md:mx-0 md:my-0 md:px-[0.694vw] md:py-[0.694vw]">
-                        <div class="top flex flex-col justify-center items-center mb-">
-                            <h2 class="text-primary-color dark:text-text-white text-[15px] font-[600]">Pouching 3</h2>
-                            <div class="chart w-[100px] h-[100px] md:w-[5.556vw] md:h-[5.556vw] relative">
-                                <canvas id="fg_7"></canvas>
-                                <span
-                                    class="text-[13px] md:text-[0.903vw] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[600] dark:text-text-white">0%</span>
+
+                        <div class="top">
+                            <h5
+                                class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                Pouching 03
+                            </h5>
+                        </div>
+
+                        <div class="center flex items-start justify-between relative">
+                            <div class="trend">
+                                <h5
+                                    class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Trend: <span class="percent text-green-500">1.25%</span>
+                                </h5>
+
+                            </div>
+                            <div class="gauge absolute top-0 left-[55%] h-5">
+                                <div class="h-32 w-32 translate-x-[23%] md:translate-x-4 -translate-y-14 relative">
+                                    <canvas id="fg_gauge_7"></canvas>
+                                    <h5
+                                        class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        0%
+                                    </h5>
+                                    <h5
+                                        class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                        000/000
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="bottom mt-[10px] md:mt-[0.694vw]">
-                            <div class="bottom-list flex justify-between md:justify-normal md:gap-[0.347vw]">
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Target
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
 
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Actual
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                                <div class="bottom-item">
-                                    <h4
-                                        class="text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color dark:bg-black-color w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        Diff.
-                                    </h4>
-                                    <h4
-                                        class="text-primary-color dark:text-text-white text-[13px] md:text-[0.903vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[6.25vw] border border-primary-color dark:border-white">
-                                        -</h4>
-                                </div>
-
-                            </div>
+                        <div class="bottom w-full pt-10">
+                            <canvas id="fg_7" class="max-h-20"></canvas>
                         </div>
                     </div>
 

@@ -1,232 +1,62 @@
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
-import { mentosDetail } from './data/mentos-data';
 import dashboardApi from './api/dasboardApi';
-
-// const semiDlineChart = document.getElementById('semiDlineChart');
-
-// const data = {
-//     labels: [
-//         'Actual',
-//         'Diff',
-//     ],
-//     datasets: [{
-//         label: 'D-line',
-//         data: [70, 30],
-//         backgroundColor: [
-//             '#00ff1b',
-//             '#d60d0d',
-//         ],
-//     }]
-// };
-
-// new Chart(semiDlineChart, {
-//     type: 'doughnut',
-//     data: data,
-//     options: {
-//         plugins: {
-//             legend: {
-//                 display: false
-//             },
-//             tooltip: {
-//                 enabled: false
-//             },
-//         },
-//     },
-// });
-
-const initLoadCountData = (element, data, status) => {
-    const htmlEle = document.getElementById(element);
-    if (htmlEle) {
-        htmlEle.classList.remove("text_danger", "text_success");
-        htmlEle.textContent = new Intl.NumberFormat().format(data);
-        if (!element.includes("target")) {
-            if ((status).toString() === "1") {
-                htmlEle.classList.add("text_danger");
-            } else if ((status).toString() === "0") {
-                htmlEle.classList.add("text_success");
-            }
-        }
-    }
-}
-
-const dataOfEachLocation = (location, productData) => {
-    return productData.filter(x => (x.type).toString() === location);
-}
-
-const initLoadDataEachLocation = (data, element, location) => {
-    const rootEle = document.querySelector(element);
-    if (rootEle) {
-        data.map((x, index) => {
-            const title = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .top h2`);
-            if (title) {
-                title.textContent = x.name;
-            }
-
-            const percent = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .top .chart span`);
-            if (percent) {
-                if (x.actual == 0 || x.totalTarget == 0) {
-                    percent.textContent = `0%`;
-                } else {
-                    if (x.actual == x.totalTarget) {
-                        percent.textContent = `100%`;
-                    }
-                    percent.textContent = `${(Math.round((x.actual / x.totalTarget) * 100))}%`;
-                }
-
-            }
-
-            const target = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(1) h4:nth-child(2)`);
-            if (target) {
-                target.textContent = new Intl.NumberFormat().format(x.totalTarget);
-            }
-
-            const actual = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(2) h4:nth-child(2)`);
-            if (actual) {
-                actual.textContent = new Intl.NumberFormat().format(x.actual);
-                actual.classList.remove("text_danger", "text_success");
-                if ((x.status).toString() === "1") {
-                    actual.classList.add("text_danger");
-                } else if ((x.status).toString() === "0") {
-                    actual.classList.add("text_success");
-                }
-            }
-
-            // const actual = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(2)`);
-            // if ((x.status).toString() === "1") {
-            //     actual.innerHTML =
-            //         `
-            //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
-            //             Actual
-            //         </h4>
-            //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color text_danger">
-            //             ${x.actual}
-            //         </h4>
-            //         `
-            // } else if ((x.status).toString() === "0") {
-            //     actual.innerHTML =
-            //         `
-            //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
-            //             Actual
-            //         </h4>
-            //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color text_success">
-            //             ${x.actual}
-            //         </h4>
-            //         `
-            // } else {
-            //     actual.innerHTML =
-            //         `
-            //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
-            //             Actual
-            //         </h4>
-            //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color">
-            //             ${x.actual}
-            //         </h4>
-            //         `
-            // }
-
-            const diff = rootEle.querySelector(`.content-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(3) h4:nth-child(2)`);
-            if (diff) {
-                diff.textContent = new Intl.NumberFormat().format(x.different);
-                diff.classList.remove("text_danger", "text_success");
-                if ((x.status).toString() === "1") {
-                    diff.classList.add("text_danger");
-                } else if ((x.status).toString() === "0") {
-                    diff.classList.add("text_success");
-                }
-            }
-
-            // const diff = rootEle.querySelector(`.content-semi-item:nth-child(${index + 1}) .bottom .bottom-item:nth-child(3)`);
-            // if ((x.status).toString() === "1") {
-            //     diff.innerHTML =
-            //         `
-            //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
-            //             Diff.
-            //         </h4>
-            //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color text_danger">
-            //             ${x.different}
-            //         </h4>
-            //         `
-            // } else if ((x.status).toString() === "0") {
-            //     diff.innerHTML =
-            //         `
-            //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
-            //             Diff.
-            //         </h4>
-            //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color text_success">
-            //             ${x.different}
-            //         </h4>
-            //         `
-            // } else {
-            //     diff.innerHTML =
-            //         `
-            //         <h4 class="text-text-white text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] bg-primary-color w-[100px] md:w-[4.861vw] border border-primary-color">
-            //             Diff.
-            //         </h4>
-            //         <h4 class="text-primary-color text-[13px] md:text-[0.694vw] font-[600] text-center md:px-[0.139vw] md:py-[0.139vw] w-[100px] md:w-[4.861vw] border border-primary-color">
-            //             ${x.different}
-            //         </h4>
-            //         `
-            // }
-
-            let chartData = [];
-            if (x.actual == 0 || x.totalTarget == 0) {
-                chartData = [];
-            }
-            else
-                if (x.actual >= x.totalTarget) {
-                    chartData = [100, 0];
-                } else {
-                    chartData = [x.actual, x.totalTarget - x.actual]
-                }
-
-            // const chartData = [x.actual, x.totalTarget - x.actual];
-
-            const chart = Chart.getChart(`${location}_${index + 1}`);
-            chart.config.data.datasets[0].data = chartData;
-            chart.update();
-        }
-        );
-    }
-}
-
-const initLoadData = (data) => {
-    // console.log("run");
-    const semiData = dataOfEachLocation("0", data);
-    const fgData = dataOfEachLocation("1", data);
-
-    initLoadDataEachLocation(semiData, ".content-semi-list", "semi");
-    initLoadDataEachLocation(fgData, ".content-finished-list", "fg");
-}
-
 
 const renderChart = (location, numberOfChart) => {
     for (let i = 1; i <= numberOfChart; i++) {
-        let chart = Chart.getChart(`${location}_${i}`);
-        if (chart) {
-            chart.destroy();
+        let gaugeChart = Chart.getChart(`${location}_gauge_${i}`);
+        let mainChart = Chart.getChart(`${location}_${i}`);
+
+        if (gaugeChart) {
+            gaugeChart.destroy();
         }
 
-        const chartEle = document.getElementById(`${location}_${i}`);
-        if (chartEle) {
-            const data = {
-                // labels: [
-                //     'Actual',
-                //     'Target',
-                // ],
+        if (mainChart) {
+            mainChart.destroy();
+        }
+
+        const gaugeChartEle = document.getElementById(`${location}_gauge_${i}`);
+        const mainChartEle = document.getElementById(`${location}_${i}`);
+
+        if (gaugeChartEle && mainChartEle) {
+            const gaugeData = {
+                labels: [],
                 datasets: [{
-                    label: 'D-line',
+                    label: "Gauge",
                     data: [],
                     backgroundColor: [
-                        '#1cb656',
-                        '#fb0000',
+                        "rgb(54, 162, 235)",
+                        "rgb(255, 99, 132)",
                     ],
+                    circumference: 180,
+                    rotation: 270,
+                    cutout: '60%',
                 }]
             };
 
-            chart = new Chart(chartEle, {
-                type: 'doughnut',
-                data: data,
+            const mainData = {
+                datasets: [{
+                    // label: "H-Target",
+                    data: [],
+                    borderWidth: 0,
+                    backgroundColor: [],
+                    order: 2
+                }, {
+                    data: [],
+                    type: 'line',
+                    // label: "H-Actual",
+                    fill: false,
+                    tension: 0,
+                    pointRadius: 3,
+                    borderColor: 'rgb(255, 205, 86)',
+
+                }],
+                labels: []
+            }
+
+            gaugeChart = new Chart(gaugeChartEle, {
+                type: "doughnut",
+                data: gaugeData,
                 options: {
                     plugins: {
                         legend: {
@@ -234,10 +64,152 @@ const renderChart = (location, numberOfChart) => {
                         },
                         tooltip: {
                             enabled: false
+                        }
+                    },
+                }
+            });
+
+            mainChart = new Chart(mainChartEle, {
+                type: "bar",
+                data: mainData,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: true
                         },
                     },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
+                    },
+                    responsive: true
                 },
             });
+        }
+    }
+}
+
+const dataOfEachLocation = (location, productData) => {
+    return productData.filter(x => x.type === Number.parseInt(location));
+}
+
+const initLoadData = (data, rootEle, type) => {
+    for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+
+        const itemContentEle = document.querySelector(`.${rootEle} .content-semi-list .content-item:nth-child(${i + 1})`);
+        if (itemContentEle) {
+            const nameEle = itemContentEle.querySelector(".top h5");
+            if (nameEle) {
+                nameEle.textContent = element.name;
+            }
+
+            const gaugePercent = itemContentEle.querySelector(".center .gauge .gauge_percent");
+            if (gaugePercent) {
+                if (element.quantity.actual == 0 || element.quantity.total == 0) {
+                    gaugePercent.textContent = `0%`;
+                } else {
+                    if (element.quantity.actual == element.quantity.target) {
+                        gaugePercent.textContent = `100%`;
+                    }
+                    gaugePercent.textContent = `${(Math.round((element.quantity.actual / element.quantity.target) * 100))}%`;
+                }
+            }
+
+            const gaugeInfoEle = itemContentEle.querySelector(".center .gauge .gauge_info");
+            if (gaugeInfoEle) {
+                gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(element.quantity.actual)}/${new Intl.NumberFormat().format(element.quantity.target)}`;
+            }
+        }
+
+        let chartData = [];
+        if (element.quantity.actual == 0 || element.quantity.target == 0) {
+            chartData = [];
+        }
+        else
+            if (element.quantity.actual >= element.quantity.target) {
+                chartData = [100, 0];
+            } else {
+                chartData = [element.quantity.actual, element.quantity.target - element.quantity.actual]
+            }
+
+        // const chartData = [1, 1]
+
+        const chart = Chart.getChart(`${type}_gauge_${i + 1}`);
+        if (chart) {
+            chart.config.data.datasets[0].data = chartData;
+            chart.update();
+        }
+
+
+        const COLORS = {
+            red: "#fb0003",
+            green: "#05b259"
+        };
+
+        const targetData = [];
+        const actualData = [];
+        const labelData = [];
+        const colors = [];
+
+        for (let i = 0; i < element.productions.length; i++) {
+            const ele = element.productions[i];
+
+            if (ele.actual < ele.target) {
+                colors.push(COLORS.red);
+            } else {
+                colors.push(COLORS.green)
+            }
+
+            targetData.push(ele.target);
+            actualData.push(ele.actual);
+            labelData.push(ele.display);
+        }
+
+        const chartMain = Chart.getChart(`${type}_${i + 1}`);
+        if (chartMain) {
+            chartMain.config.data.labels = labelData;
+            chartMain.config.data.datasets[0].data = actualData;
+            chartMain.config.data.datasets[1].data = targetData;
+            chartMain.config.data.datasets[0].backgroundColor = colors;
+            chartMain.update();
+        }
+    }
+}
+
+
+const initLoadCountData = (data) => {
+    const targetEle = document.getElementById("target")
+    if (targetEle) {
+        targetEle.textContent = new Intl.NumberFormat().format(data.semiQuantity.target + data.finishQuantity.target);
+    }
+
+    const actualEle = document.getElementById("actual");
+    if (actualEle) {
+        actualEle.textContent = new Intl.NumberFormat().format(data.semiQuantity.actual + data.finishQuantity.actual);
+        actualEle.classList.remove("text_success", "text_danger");
+        if (data.semiQuantity.different + data.finishQuantity.different < 0) {
+            actualEle.classList.add("text_danger");
+        } else {
+            actualEle.classList.add("text_success");
+        }
+    }
+
+    const diffEle = document.getElementById("diff");
+    if (diffEle) {
+        diffEle.textContent = new Intl.NumberFormat().format(data.semiQuantity.different + data.finishQuantity.different);
+        diffEle.classList.remove("text_success", "text_danger");
+        if (data.semiQuantity.different + data.finishQuantity.different < 0) {
+            diffEle.classList.add("text_danger");
+        } else {
+            diffEle.classList.add("text_success");
         }
     }
 }
@@ -247,6 +219,29 @@ const renderChart = (location, numberOfChart) => {
 
     const key = JSON.parse(localStorage.getItem("key"));
     if (key) {
+
+        const navList = document.querySelectorAll("ol li");
+        for (let i = 0; i < navList.length; i++) {
+            const navEle = navList[i];
+
+            navEle.addEventListener('click', () => {
+                const eleAttr = navEle.getAttribute("id");
+                switch (eleAttr) {
+                    case "nav-main":
+                        window.location.assign("index.html");
+                        break;
+                    case "nav-mentos":
+                        window.location.assign("mentos.html");
+                        break;
+                    case "nav-gum":
+                        window.location.assign("gum.html");
+                        break;
+
+                    default:
+                        break;
+                }
+            })
+        }
 
         const loggedUser = JSON.parse(localStorage.getItem("user"));
 
@@ -331,13 +326,16 @@ const renderChart = (location, numberOfChart) => {
             try {
                 const { data } = await dashboardApi.getMentos({ "thinknext_key": key });
                 // console.log(data);
-                // const data = mentosDetail;
 
-                initLoadCountData("target", data.totalTarget, data.status);
-                initLoadCountData("actual", data.actual, data.status);
-                initLoadCountData("diff", data.different, data.status);
+                initLoadCountData(data);
 
-                initLoadData(data.locations);
+                const semiData = dataOfEachLocation("0", data.locations);
+                const fgData = dataOfEachLocation("1", data.locations);
+                // console.log("semi", semiData);
+                // console.log("fg", fgData);
+
+                initLoadData(semiData, "content-semi", "semi");
+                initLoadData(fgData, "content-finished", "fg");
 
             } catch (error) {
                 console.log("failed to fetch data", error);

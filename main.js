@@ -1,147 +1,253 @@
 import dayjs from "dayjs";
 import dashboardApi from "./api/dasboardApi";
-import { dasboarddata } from "./data/dashboard-data";
+import Chart from 'chart.js/auto';
 
-const dataOfEachProduct = (product, data) => {
-    return data.filter(x => x.name.toUpperCase() === product.name.toUpperCase());
+const renderChart = (location, numberOfChart) => {
+    for (let i = 1; i <= numberOfChart; i++) {
+        let gaugeChart = Chart.getChart(`${location}_gauge_${i}`);
+        let mainChart = Chart.getChart(`${location}_${i}`);
+
+        if (gaugeChart) {
+            gaugeChart.destroy();
+        }
+
+        if (mainChart) {
+            mainChart.destroy();
+        }
+
+        const gaugeChartEle = document.getElementById(`${location}_gauge_${i}`);
+        const mainChartEle = document.getElementById(`${location}_${i}`);
+
+        if (gaugeChartEle && mainChartEle) {
+            const gaugeData = {
+                labels: [],
+                datasets: [{
+                    label: "Gauge",
+                    data: [],
+                    backgroundColor: [
+                        "rgb(54, 162, 235)",
+                        "rgb(255, 99, 132)",
+                    ],
+                    circumference: 180,
+                    rotation: 270,
+                    cutout: '60%',
+                }]
+            };
+
+            const mainData = {
+                datasets: [{
+                    // label: "H-Target",
+                    data: [],
+                    borderWidth: 0,
+                    backgroundColor: [],
+                    order: 2
+                }, {
+                    data: [],
+                    type: 'line',
+                    // label: "H-Actual",
+                    fill: false,
+                    tension: 0,
+                    pointRadius: 3,
+                    borderColor: 'rgb(255, 205, 86)',
+
+                }],
+                labels: []
+            }
+
+            gaugeChart = new Chart(gaugeChartEle, {
+                type: "doughnut",
+                data: gaugeData,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                }
+            });
+
+            mainChart = new Chart(mainChartEle, {
+                type: "bar",
+                data: mainData,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: true
+                        },
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
+                    },
+                    responsive: true
+                },
+            });
+        }
+    }
 }
 
-const dataOfEachLocation = (location, productData) => {
-    return productData.filter(x => x.type === location);
+const getQuantity = (data, typeOfQuantity, type) => {
+    let result = 0;
+    for (let i = 0; i < data.length; i++) {
+        result = result + data[i][typeOfQuantity][type];
+    }
+
+    return result;
 }
 
-const addMoreLine = (data, type) => {
-    const itemTemplate = {
-        "name": "",
-        "type": type,
-        "totalTarget": "",
-        "hourlyTarget": "",
-        "actual": "",
-        "different": "",
-        "status": ""
-    }
+const updateTotalCountData = (element, value, type) => {
+    const ele = document.getElementById(element);
 
-    const dataLength = data.length;
+    if (ele) {
+        ele.classList.remove("text_success", "text_danger");
+        ele.textContent = new Intl.NumberFormat().format(value[type]);
 
-    if (dataLength.toString() === "9") {
-        return data;
-    }
-
-    for (let i = 0; i < 9 - dataLength; i++) {
-        data.push(itemTemplate);
-    }
-}
-
-const initLoadCountData = (element, data, status) => {
-    const htmlEle = document.getElementById(element);
-    if (htmlEle) {
-        htmlEle.classList.remove("text_danger", "text_success");
-        htmlEle.textContent = new Intl.NumberFormat().format(data);
-        if (!element.includes("target")) {
-            if ((status).toString() === "1") {
-                htmlEle.classList.add("text_danger");
-            } else if ((status).toString() === "0") {
-                htmlEle.classList.add("text_success");
+        if (type !== "target") {
+            if (Number.parseInt(value.diff) < 0) {
+                ele.classList.add("text_danger");
+            } else {
+                ele.classList.add("text_success");
             }
         }
     }
 }
 
-const initLoadDataEachLocation = (data, rootElement, product) => {
-    // console.log(data);
-    const tbody = document.querySelector(rootElement).querySelector(`.${product.name} table`).getElementsByTagName("tbody")[0];
-    // console.log(tbody)
-    if (tbody) {
-        let trEle = data.map((x) => {
-            if (x.enabled === false) {
-                return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-                <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-                <td class="border border-slate-300 dark:border-black-color text-right">-</td>
-            </tr>`
-            } else {
-                if ((x.status).toString() === "1") {
-                    return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                                    <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] status_danger"></td>
-                                    <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-                                    <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
-                                    <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
-                                    <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.actual)}</td>
-                                    <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
-                                </tr>`
-                } else if ((x.status).toString() === "0") {
-                    return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                                    <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] bg-success"></td>
-                                    <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-                                    <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
-                                    <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
-                                    <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.actual)}</td>
-                                    <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
-                                </tr>`
-                } else {
-                    return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-                                <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-                                <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-                                <td class="border border-slate-300 dark:border-black-color text-right">${x.totalTarget}</td>
-                                <td class="border border-slate-300 dark:border-black-color text-right">${x.hourlyTarget}</td>
-                                <td class="border border-slate-300 dark:border-black-color text-right">${x.actual}</td>
-                                <td class="border border-slate-300 dark:border-black-color text-right">${x.different}</td>
-                            </tr>`
-                }
+const initLoadToTalCount = (data, area) => {
+    const value = {
+        target: getQuantity(data, `${area}Quantity`, "target"),
+        actual: getQuantity(data, `${area}Quantity`, "actual"),
+        diff: getQuantity(data, `${area}Quantity`, "different")
+    }
+
+    updateTotalCountData(`${area === "finish" ? "fg" : area}-target`, value, "target");
+    updateTotalCountData(`${area === "finish" ? "fg" : area}-actual`, value, "actual");
+    updateTotalCountData(`${area === "finish" ? "fg" : area}-diff`, value, "diff");
+}
+
+const dataOfEachProduct = (product, data) => {
+    return data.filter(x => x.name.toUpperCase() === product.name.toUpperCase());
+};
+
+const initLoadGaugeData = (element, product, data, type, index) => {
+    const gaugeInfoEle = document.querySelector(`.${element} .${product.name} .gauge_info`);
+    if (gaugeInfoEle) {
+        gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(data.actual)}/${new Intl.NumberFormat().format(data.target)}`;
+    }
+
+    const gaugePercent = document.querySelector(`.${element} .${product.name} .gauge_percent`);
+    if (gaugePercent) {
+        if (data.actual == 0 || data.total == 0) {
+            gaugePercent.textContent = `0%`;
+        } else {
+            if (data.actual == data.target) {
+                gaugePercent.textContent = `100%`;
             }
+            gaugePercent.textContent = `${(Math.round((data.actual / data.target) * 100))}%`;
+        }
+    }
 
-            // if ((x.status).toString() === "1") {
-            //     return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-            //                 <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] status_danger"></td>
-            //                 <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-            //                 <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
-            //                 <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
-            //                 <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.actual)}</td>
-            //                 <td class="border border-slate-300 dark:border-black-color text-right text_danger">${new Intl.NumberFormat().format(x.different)}</td>
-            //             </tr>`
-            // } else if ((x.status).toString() === "0") {
-            //     return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-            //                 <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw] bg-success"></td>
-            //                 <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-            //                 <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.totalTarget)}</td>
-            //                 <td class="border border-slate-300 dark:border-black-color text-right">${new Intl.NumberFormat().format(x.hourlyTarget)}</td>
-            //                 <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.actual)}</td>
-            //                 <td class="border border-slate-300 dark:border-black-color text-right text_success">${new Intl.NumberFormat().format(x.different)}</td>
-            //             </tr>`
-            // } else {
-            //     return `<tr class="text-[10px] md:text-[0.708vw] font-[600] dark:text-text-white">
-            //             <td class="border border-slate-300 dark:border-black-color h-[35px] md:h-[2.083vw]"></td>
-            //             <td class="border border-slate-300 dark:border-black-color">${x.name}</td>
-            //             <td class="border border-slate-300 dark:border-black-color text-right">${x.totalTarget}</td>
-            //             <td class="border border-slate-300 dark:border-black-color text-right">${x.hourlyTarget}</td>
-            //             <td class="border border-slate-300 dark:border-black-color text-right">${x.actual}</td>
-            //             <td class="border border-slate-300 dark:border-black-color text-right">${x.different}</td>
-            //         </tr>`
-            // }
+    let chartData = [];
+    if (data.actual == 0 || data.target == 0) {
+        chartData = [];
+    }
+    else
+        if (data.actual >= data.target) {
+            chartData = [100, 0];
+        } else {
+            chartData = [data.actual, data.target - data.actual]
+        }
 
-        }).join("");
-        tbody.innerHTML = trEle;
+    // const chartData = [1, 1]
+
+    const chart = Chart.getChart(`${type}_gauge_${index + 1}`);
+    if (chart) {
+        chart.config.data.datasets[0].data = chartData;
+        chart.update();
     }
 }
 
-const locationData = (product, productData) => {
-    const semiData = dataOfEachLocation(product.semi, productData[0].locations);
-    const fgData = dataOfEachLocation(product.fg, productData[0].locations);
+const initLoadMainData = (data, index, type) => {
 
-    addMoreLine(semiData, product.semi);
-    addMoreLine(fgData, product.fg);
+    const COLORS = {
+        red: "#fb0003",
+        green: "#05b259"
+    };
 
-    initLoadDataEachLocation(semiData, ".content-semi", product);
-    initLoadDataEachLocation(fgData, ".content-finished", product);
+    const targetData = [];
+    const actualData = [];
+    const labelData = [];
+    const colors = [];
+
+    for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+
+        if (element.actual < element.target) {
+            colors.push(COLORS.red);
+        } else {
+            colors.push(COLORS.green)
+        }
+
+        targetData.push(element.target);
+        actualData.push(element.actual);
+        labelData.push(element.display);
+    }
+
+    const chart = Chart.getChart(`${type}_${index + 1}`);
+    if (chart) {
+        chart.config.data.labels = labelData;
+        chart.config.data.datasets[0].data = actualData;
+        chart.config.data.datasets[1].data = targetData;
+        chart.config.data.datasets[0].backgroundColor = colors;
+        chart.update();
+    }
+}
+
+const initProductData = (product, productData, index) => {
+    initLoadMainData(productData[0].semiProductions, index, "semi");
+    initLoadMainData(productData[0].finishProductions, index, "fg");
+
+    initLoadGaugeData("content-semi", product, productData[0].semiQuantity, "semi", index);
+    initLoadGaugeData("content-finished", product, productData[0].finishQuantity, "fg", index);
+
 }
 
 (() => {
 
     const key = JSON.parse(localStorage.getItem("key"));
     if (key) {
+
+        const navList = document.querySelectorAll("ol li");
+        for (let i = 0; i < navList.length; i++) {
+            const navEle = navList[i];
+
+            navEle.addEventListener('click', () => {
+                const eleAttr = navEle.getAttribute("id");
+                switch (eleAttr) {
+                    case "nav-main":
+                        window.location.assign("index.html");
+                        break;
+                    case "nav-mentos":
+                        window.location.assign("mentos.html");
+                        break;
+                    case "nav-gum":
+                        window.location.assign("gum.html");
+                        break;
+
+                    default:
+                        break;
+                }
+            })
+        }
 
         const loggedUser = JSON.parse(localStorage.getItem("user"));
 
@@ -176,6 +282,9 @@ const locationData = (product, productData) => {
         if (dateEle) {
             dateEle.textContent = `${dayjs(new Date()).format('DD-MMM-YY')}`;
         }
+
+        renderChart("semi", 5);
+        renderChart("fg", 5);
 
         function countTime() {
             const timeEle = document.querySelector(".header-content .right .time");
@@ -220,35 +329,29 @@ const locationData = (product, productData) => {
 
             try {
                 const { data } = await dashboardApi.getAll({ "thinknext_key": key });
-                // console.log(data);
-
-                // const data = dasboarddata;
+                // console.log('check', data);
 
                 const PRODUCTS = [
                     {
                         name: "mentos",
                         semi: 0,
-                        fg: 1
+                        fg: 1,
                     },
                     {
                         name: "gum",
                         semi: 0,
-                        fg: 1
+                        fg: 1,
                     }
                 ];
 
-                initLoadCountData("semi-target", data.semiTotalTarget, data.semiStatus);
-                initLoadCountData("semi-actual", data.semiActual, data.semiStatus);
-                initLoadCountData("semi-diff", data.semiDifferent, data.semiStatus);
-
-                initLoadCountData("fg-target", data.finishTotalTarget, data.finishStatus);
-                initLoadCountData("fg-actual", data.finishActual, data.finishStatus);
-                initLoadCountData("fg-diff", data.finishDifferent, data.finishStatus);
+                initLoadToTalCount(data, "semi");
+                initLoadToTalCount(data, "finish");
 
                 for (let i = 0; i < PRODUCTS.length; i++) {
-                    const productData = dataOfEachProduct(PRODUCTS[i], data.areas);
-                    locationData(PRODUCTS[i], productData);
+                    const productData = dataOfEachProduct(PRODUCTS[i], data);
+                    initProductData(PRODUCTS[i], productData, i);
                 }
+
             } catch (error) {
                 console.log("failed to fetch data", error);
             }
@@ -260,5 +363,4 @@ const locationData = (product, productData) => {
     } else {
         window.location.assign("login.html");
     }
-
 })();

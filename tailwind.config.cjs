@@ -12,10 +12,14 @@ export default {
         'success': '#02b365',
         'danger': '#fb0003',
         'normal': '#ebf10a',
-        'dark-grey': '#444444'
+        'dark-grey': '#444444',
+        'blue-gray-900': '#536872',
       },
       screens: {
         'xs': '390px',
+      },
+      spacing: {
+        '29': '7.5rem'
       }
     },
   },
