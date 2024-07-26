@@ -36,7 +36,7 @@ const renderChart = (location, numberOfChart) => {
 
             const mainData = {
                 datasets: [{
-                    // label: "H-Target",
+                    label: "Actual",
                     data: [],
                     borderWidth: 0,
                     backgroundColor: [],
@@ -44,7 +44,7 @@ const renderChart = (location, numberOfChart) => {
                 }, {
                     data: [],
                     type: 'line',
-                    // label: "H-Actual",
+                    label: "Target",
                     fill: false,
                     tension: 0,
                     pointRadius: 3,
@@ -78,7 +78,7 @@ const renderChart = (location, numberOfChart) => {
                             display: false
                         },
                         tooltip: {
-                            enabled: true
+                            enabled: true,
                         },
                     },
                     scales: {
@@ -89,7 +89,10 @@ const renderChart = (location, numberOfChart) => {
                             display: false
                         }
                     },
-                    responsive: true
+                    responsive: true,
+                    interaction: {
+                        mode: "index"
+                    }
                 },
             });
         }
@@ -183,6 +186,8 @@ const initLoadMainData = (data, index, type) => {
         green: "#05b259"
     };
 
+    const tooltipFontSize = window.getComputedStyle(document.querySelector(".gauge .gauge_info"), null).getPropertyValue('font-size').split(".")[0];
+
     const targetData = [];
     const actualData = [];
     const labelData = [];
@@ -203,11 +208,13 @@ const initLoadMainData = (data, index, type) => {
     }
 
     const chart = Chart.getChart(`${type}_${index + 1}`);
+    console.log(chart);
     if (chart) {
         chart.config.data.labels = labelData;
         chart.config.data.datasets[0].data = actualData;
         chart.config.data.datasets[1].data = targetData;
         chart.config.data.datasets[0].backgroundColor = colors;
+        chart.config.options.plugins.tooltip = { ...chart.config.options.plugins.tooltip, titleFont: { size: Number.parseInt(tooltipFontSize) }, bodyFont: { size: Number.parseInt(tooltipFontSize) } };
         chart.update();
     }
 }
@@ -222,7 +229,6 @@ const initProductData = (product, productData, index) => {
 }
 
 (() => {
-
     const key = JSON.parse(localStorage.getItem("key"));
     if (key) {
 

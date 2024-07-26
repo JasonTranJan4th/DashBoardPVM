@@ -83,32 +83,32 @@
 
       <div class="count-semi flex items-center justify-between mt-[10px] md:mt-[0.347vw]">
         <div class="count-semi-target flex items-center justify-center">
-          <h1 class="text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-black-color
-            ">
+          <h1
+            class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-white">
             Target
           </h1>
-          <h1 id="semi-target" class="text-primary-color dark:text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-black-color
-            ">
+          <h1 id="semi-target"
+            class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-white">
             0000</h1>
         </div>
 
         <div class="count-semi-actual flex items-center justify-center">
-          <h1 class="text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[60px] md:w-[9.028vw] border border-primary-color dark:border-black-color
-            ">
+          <h1
+            class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[60px] md:w-[9.028vw] border border-primary-color dark:border-white">
             Actual
           </h1>
-          <h1 id="semi-actual" class="text-primary-color dark:text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[70px] md:w-[11.806vw] border border-primary-color dark:border-black-color
-            ">
+          <h1 id="semi-actual"
+            class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[70px] md:w-[11.806vw] border border-primary-color dark:border-white">
             0000</h1>
         </div>
 
         <div class="count-semi-diff flex items-center justify-center">
-          <h1 class="text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-black-color
-            ">
+          <h1
+            class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-white">
             Diff
           </h1>
-          <h1 id="semi-diff" class="text-primary-color dark:text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-black-color
-            ">
+          <h1 id="semi-diff"
+            class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-white">
             0000</h1>
         </div>
       </div>
@@ -131,18 +131,34 @@
               </div>
 
               <div class="center px-4 flex items-center justify-between relative">
+                <!-- <div class="chart_shift mb-1.5 h-6">
+                  <div class="chart_shift_list flex items-center gap-2 absolute top-[50%] left-[4%]">
+                    <h5
+                      class="block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      Shift 1
+                    </h5>
+                    <h5
+                      class="block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      Shift 2
+                    </h5>
+                    <h5
+                      class="block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                      Shift 3
+                    </h5>
+                  </div>
+                </div> -->
                 <div class="trend">
                   <h5
                     class="block mb-2 text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                     Trend: <span class="percent text-green-500">1.25%</span>
                   </h5>
+
                 </div>
 
-                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+
+                <div class="gauge absolute -top-[200%] right-[3%]">
                   <div class="h-29 w-29 relative">
                     <canvas id="semi_gauge_1"></canvas>
-                    <!-- top-[60%] w-full text-center -->
-                    <!-- z-[2] top-[60%] left-[35%] -->
                     <h5
                       class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                       0%
@@ -316,34 +332,34 @@
         </div>
       </div>
 
-      <div class="count-finished flex items-center justify-between mt-[10px] md:mt-20">
+      <div class="count-finished flex items-center justify-between mt-[10px] md:mt-12">
         <div class="count-finished-target flex items-center justify-center">
-          <h1 class="text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-black-color
-            ">
+          <h1
+            class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-white">
             Target
           </h1>
-          <h1 id="fg-target" class="text-primary-color dark:text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-black-color
-            ">
+          <h1 id="fg-target"
+            class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-white">
             0000</h1>
         </div>
 
         <div class="count-finished-actual flex items-center justify-center">
-          <h1 class="text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[60px] md:w-[9.028vw] border border-primary-color dark:border-black-color
-            ">
+          <h1
+            class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[60px] md:w-[9.028vw] border border-primary-color dark:border-white">
             Actual
           </h1>
-          <h1 id="fg-actual" class="text-primary-color dark:text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[70px] md:w-[11.806vw] border border-primary-color dark:border-black-color
-            ">
+          <h1 id="fg-actual"
+            class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[70px] md:w-[11.806vw] border border-primary-color dark:border-white">
             0000</h1>
         </div>
 
         <div class="count-finished-diff flex items-center justify-center">
-          <h1 class="text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-black-color
-            ">
+          <h1
+            class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-white">
             Diff
           </h1>
-          <h1 id="fg-diff" class="text-primary-color dark:text-text-white text-[12px] md:text-[0.903vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-black-color
-            ">
+          <h1 id="fg-diff"
+            class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-white">
             0000</h1>
         </div>
       </div>

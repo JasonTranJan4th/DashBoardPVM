@@ -36,7 +36,7 @@ const renderChart = (location, numberOfChart) => {
 
             const mainData = {
                 datasets: [{
-                    // label: "H-Target",
+                    label: "Actual",
                     data: [],
                     borderWidth: 0,
                     backgroundColor: [],
@@ -44,7 +44,7 @@ const renderChart = (location, numberOfChart) => {
                 }, {
                     data: [],
                     type: 'line',
-                    // label: "H-Actual",
+                    label: "Target",
                     fill: false,
                     tension: 0,
                     pointRadius: 3,
@@ -78,7 +78,7 @@ const renderChart = (location, numberOfChart) => {
                             display: false
                         },
                         tooltip: {
-                            enabled: true
+                            enabled: true,
                         },
                     },
                     scales: {
@@ -89,7 +89,10 @@ const renderChart = (location, numberOfChart) => {
                             display: false
                         }
                     },
-                    responsive: true
+                    responsive: true,
+                    interaction: {
+                        mode: "index"
+                    }
                 },
             });
         }
@@ -154,6 +157,8 @@ const initLoadData = (data, rootEle, type) => {
             green: "#05b259"
         };
 
+        const tooltipFontSize = window.getComputedStyle(document.querySelector(".gauge .gauge_info"), null).getPropertyValue('font-size').split(".")[0];
+
         const targetData = [];
         const actualData = [];
         const labelData = [];
@@ -174,11 +179,13 @@ const initLoadData = (data, rootEle, type) => {
         }
 
         const chartMain = Chart.getChart(`${type}_${i + 1}`);
+        // console.log(chartMain);
         if (chartMain) {
             chartMain.config.data.labels = labelData;
             chartMain.config.data.datasets[0].data = actualData;
             chartMain.config.data.datasets[1].data = targetData;
             chartMain.config.data.datasets[0].backgroundColor = colors;
+            chartMain.config.options.plugins.tooltip = { ...chartMain.config.options.plugins.tooltip, titleFont: { size: Number.parseInt(tooltipFontSize) }, bodyFont: { size: Number.parseInt(tooltipFontSize) } };
             chartMain.update();
         }
     }
