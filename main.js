@@ -83,16 +83,25 @@ const renderChart = (location, numberOfChart) => {
                     },
                     scales: {
                         x: {
-                            display: false
+                            display: true,
+                            grid: {
+                                display: false,
+                                drawTicks: false
+                            },
+                            // ticks: {
+                            //     font: {
+                            //         size: 11
+                            //     },
+                            // }
                         },
                         y: {
                             display: false
-                        }
+                        },
                     },
                     responsive: true,
                     interaction: {
                         mode: "index"
-                    }
+                    },
                 },
             });
         }
@@ -179,7 +188,7 @@ const initLoadGaugeData = (element, product, data, type, index) => {
     }
 }
 
-const initLoadMainData = (data, index, type) => {
+const initLoadMainData = (data, index, type, product, rootElement) => {
 
     const COLORS = {
         red: "#fb0003",
@@ -193,35 +202,164 @@ const initLoadMainData = (data, index, type) => {
     const labelData = [];
     const colors = [];
 
-    for (let i = 0; i < data.length; i++) {
-        const element = data[i];
+    let currentShift = "";
 
-        if (element.actual < element.target) {
-            colors.push(COLORS.red);
-        } else {
-            colors.push(COLORS.green)
-        }
-
-        targetData.push(element.target);
-        actualData.push(element.actual);
-        labelData.push(element.display);
+    const currHour = new Date().getHours();
+    if (currHour >= 6 && currHour < 14) {
+        currentShift = "1"
+    } else if (currHour >= 14 && currHour < 22) {
+        currentShift = "2"
+    } else {
+        currentShift = "3"
     }
 
+
+    const contentRootEle = document.querySelector(`.${rootElement}`);
+    const shiftList = contentRootEle.querySelectorAll(`.${product} .center .chart_shift .chart_shift_list h5`);
+
+    if (shiftList) {
+        for (let i = 0; i < shiftList.length; i++) {
+            const shiftItem = shiftList[i];
+
+            shiftItem.addEventListener('click', () => {
+                for (let j = 0; j < shiftList.length; j++) {
+                    shiftList[j].classList.remove("text_color_orange");
+                }
+                shiftItem.classList.add("text_color_orange");
+                localStorage.setItem(`${product}-${type}`, i + 1);
+            })
+        }
+    }
+
+    switch (localStorage.getItem(`${product}-${type}`) ? localStorage.getItem(`${product}-${type}`) : currentShift) {
+        case "1":
+            for (let j = 0; j < shiftList.length; j++) {
+                shiftList[j].classList.remove("text_color_orange");
+            }
+
+            if (localStorage.getItem(`${product}-${type}`)) {
+                const shiftEle = contentRootEle.querySelector(`.${product} .shift-${localStorage.getItem(`${product}-${type}`)}`);
+                if (shiftEle) {
+                    shiftEle.classList.add("text_color_orange");
+                }
+            } else {
+                const shiftEle = contentRootEle.querySelector(`.${product} .shift-${currentShift}`);
+                if (shiftEle) {
+                    shiftEle.classList.add("text_color_orange");
+                }
+            }
+
+
+            for (let i = 0; i < 8; i++) {
+                const ele = data[i];
+
+                if (ele.actual < ele.target) {
+                    colors.push(COLORS.red);
+                } else {
+                    colors.push(COLORS.green)
+                }
+
+                targetData.push(ele.target);
+                actualData.push(ele.actual);
+                labelData.push(ele.display.split(":")[0]);
+            }
+            break;
+        case "2":
+            for (let j = 0; j < shiftList.length; j++) {
+                shiftList[j].classList.remove("text_color_orange");
+            }
+
+            if (localStorage.getItem(`${product}-${type}`)) {
+                const shiftEle = contentRootEle.querySelector(`.${product} .shift-${localStorage.getItem(`${product}-${type}`)}`);
+                if (shiftEle) {
+                    shiftEle.classList.add("text_color_orange");
+                }
+            } else {
+                const shiftEle = contentRootEle.querySelector(`.${product} .shift-${currentShift}`);
+                if (shiftEle) {
+                    shiftEle.classList.add("text_color_orange");
+                }
+            }
+
+            for (let i = 8; i < 16; i++) {
+                const ele = data[i];
+
+                if (ele.actual < ele.target) {
+                    colors.push(COLORS.red);
+                } else {
+                    colors.push(COLORS.green)
+                }
+
+                targetData.push(ele.target);
+                actualData.push(ele.actual);
+                labelData.push(ele.display.split(":")[0]);
+            }
+            break;
+        case "3":
+            for (let j = 0; j < shiftList.length; j++) {
+                shiftList[j].classList.remove("text_color_orange");
+            }
+
+            if (localStorage.getItem(`${product}-${type}`)) {
+                const shiftEle = contentRootEle.querySelector(`.${product} .shift-${localStorage.getItem(`${product}-${type}`)}`);
+                if (shiftEle) {
+                    shiftEle.classList.add("text_color_orange");
+                }
+            } else {
+                const shiftEle = contentRootEle.querySelector(`.${product} .shift-${currentShift}`);
+                if (shiftEle) {
+                    shiftEle.classList.add("text_color_orange");
+                }
+            }
+
+            for (let i = 16; i < data.length; i++) {
+                const ele = data[i];
+
+                if (ele.actual < ele.target) {
+                    colors.push(COLORS.red);
+                } else {
+                    colors.push(COLORS.green)
+                }
+
+                targetData.push(ele.target);
+                actualData.push(ele.actual);
+                labelData.push(ele.display.split(":")[0]);
+            }
+            break;
+
+        default:
+            break;
+    }
+
+    // for (let i = 0; i < data.length; i++) {
+    //     const element = data[i];
+
+    //     if (element.actual < element.target) {
+    //         colors.push(COLORS.red);
+    //     } else {
+    //         colors.push(COLORS.green)
+    //     }
+
+    //     targetData.push(element.target);
+    //     actualData.push(element.actual);
+    //     labelData.push(element.display);
+    // }
+
     const chart = Chart.getChart(`${type}_${index + 1}`);
-    console.log(chart);
     if (chart) {
         chart.config.data.labels = labelData;
         chart.config.data.datasets[0].data = actualData;
         chart.config.data.datasets[1].data = targetData;
         chart.config.data.datasets[0].backgroundColor = colors;
         chart.config.options.plugins.tooltip = { ...chart.config.options.plugins.tooltip, titleFont: { size: Number.parseInt(tooltipFontSize) }, bodyFont: { size: Number.parseInt(tooltipFontSize) } };
+        chart.config.options.scales.x.ticks.font = { size: Number.parseInt(tooltipFontSize) }
         chart.update();
     }
 }
 
 const initProductData = (product, productData, index) => {
-    initLoadMainData(productData[0].semiProductions, index, "semi");
-    initLoadMainData(productData[0].finishProductions, index, "fg");
+    initLoadMainData(productData[0].semiProductions, index, "semi", product.name, "content-semi");
+    initLoadMainData(productData[0].finishProductions, index, "fg", product.name, "content-finished");
 
     initLoadGaugeData("content-semi", product, productData[0].semiQuantity, "semi", index);
     initLoadGaugeData("content-finished", product, productData[0].finishQuantity, "fg", index);
@@ -362,7 +500,7 @@ const initProductData = (product, productData, index) => {
                 console.log("failed to fetch data", error);
             }
 
-            setTimeout(fetchDataAndReload, 5000);
+            setTimeout(fetchDataAndReload, 1000);
         }
 
         fetchDataAndReload();

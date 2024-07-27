@@ -57,6 +57,7 @@ h6 {
     --success: #05b259;
     --danger: #fb0000;
     --normal: #ebf10a;
+    --orange: #FF5733;
 }
 
 body {
@@ -103,4 +104,8 @@ body {
 
 .text_success {
     color: var(--success) !important;
+}
+
+.text_color_orange {
+    color: var(--orange) !important;
 }

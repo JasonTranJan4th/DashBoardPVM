@@ -14,6 +14,7 @@ export default {
         'normal': '#ebf10a',
         'dark-grey': '#444444',
         'blue-gray-900': '#536872',
+        'orange': '#FF5733'
       },
       screens: {
         'xs': '390px',

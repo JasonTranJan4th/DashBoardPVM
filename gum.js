@@ -83,16 +83,25 @@ const renderChart = (location, numberOfChart) => {
                     },
                     scales: {
                         x: {
-                            display: false
+                            display: true,
+                            grid: {
+                                display: false,
+                                drawTicks: false
+                            },
+                            // ticks: {
+                            //     font: {
+                            //         size: 11
+                            //     },
+                            // }
                         },
                         y: {
                             display: false
-                        }
+                        },
                     },
                     responsive: true,
                     interaction: {
                         mode: "index"
-                    }
+                    },
                 },
             });
         }
@@ -151,7 +160,6 @@ const initLoadData = (data, rootEle, type) => {
             chart.update();
         }
 
-
         const COLORS = {
             red: "#fb0003",
             green: "#05b259"
@@ -164,19 +172,137 @@ const initLoadData = (data, rootEle, type) => {
         const labelData = [];
         const colors = [];
 
-        for (let i = 0; i < element.productions.length; i++) {
-            const ele = element.productions[i];
+        let currentShift = "";
 
-            if (ele.actual < ele.target) {
-                colors.push(COLORS.red);
-            } else {
-                colors.push(COLORS.green)
-            }
-
-            targetData.push(ele.target);
-            actualData.push(ele.actual);
-            labelData.push(ele.display);
+        const currHour = new Date().getHours();
+        if (currHour >= 6 && currHour < 14) {
+            currentShift = "1"
+        } else if (currHour >= 14 && currHour < 22) {
+            currentShift = "2"
+        } else {
+            currentShift = "3"
         }
+
+        const shiftList = itemContentEle.querySelectorAll(".center .chart_shift .chart_shift_list h5");
+        if (shiftList) {
+            for (let i = 0; i < shiftList.length; i++) {
+                const shiftItem = shiftList[i];
+
+                shiftItem.addEventListener('click', () => {
+                    for (let j = 0; j < shiftList.length; j++) {
+                        shiftList[j].classList.remove("text_color_orange");
+                    }
+                    shiftItem.classList.add("text_color_orange");
+                    localStorage.setItem(`${element.name}`, i + 1);
+                })
+            }
+        }
+
+        switch (localStorage.getItem(`${element.name}`) ? localStorage.getItem(`${element.name}`) : currentShift) {
+            case "1":
+                for (let j = 0; j < shiftList.length; j++) {
+                    shiftList[j].classList.remove("text_color_orange");
+                }
+
+                if (localStorage.getItem(`${element.name}`)) {
+                    const shiftEle = itemContentEle.querySelector(`.shift-${localStorage.getItem(`${element.name}`)}`);
+                    if (shiftEle) {
+                        shiftEle.classList.add("text_color_orange");
+                    }
+                } else {
+                    const shiftEle = itemContentEle.querySelector(`.shift-${currentShift}`);
+                    if (shiftEle) {
+                        shiftEle.classList.add("text_color_orange");
+                    }
+                }
+
+
+                for (let i = 0; i < 8; i++) {
+                    const ele = element.productions[i];
+
+                    if (ele.actual < ele.target) {
+                        colors.push(COLORS.red);
+                    } else {
+                        colors.push(COLORS.green)
+                    }
+
+                    targetData.push(ele.target);
+                    actualData.push(ele.actual);
+                    labelData.push(ele.display.split(":")[0]);
+                }
+                break;
+            case "2":
+                for (let j = 0; j < shiftList.length; j++) {
+                    shiftList[j].classList.remove("text_color_orange");
+                }
+
+                if (localStorage.getItem(`${element.name}`)) {
+                    const shiftEle = itemContentEle.querySelector(`.shift-${localStorage.getItem(`${element.name}`)}`);
+                    shiftEle.classList.add("text_color_orange");
+                } else {
+                    const shiftEle = itemContentEle.querySelector(`.shift-${currentShift}`);
+                    shiftEle.classList.add("text_color_orange");
+                }
+
+                for (let i = 8; i < 16; i++) {
+                    const ele = element.productions[i];
+
+                    if (ele.actual < ele.target) {
+                        colors.push(COLORS.red);
+                    } else {
+                        colors.push(COLORS.green)
+                    }
+
+                    targetData.push(ele.target);
+                    actualData.push(ele.actual);
+                    labelData.push(ele.display.split(":")[0]);
+                }
+                break;
+            case "3":
+                for (let j = 0; j < shiftList.length; j++) {
+                    shiftList[j].classList.remove("text_color_orange");
+                }
+
+                if (localStorage.getItem(`${element.name}`)) {
+                    const shiftEle = itemContentEle.querySelector(`.shift-${localStorage.getItem(`${element.name}`)}`);
+                    shiftEle.classList.add("text_color_orange");
+                } else {
+                    const shiftEle = itemContentEle.querySelector(`.shift-${currentShift}`);
+                    shiftEle.classList.add("text_color_orange");
+                }
+
+                for (let i = 16; i < element.productions.length; i++) {
+                    const ele = element.productions[i];
+
+                    if (ele.actual < ele.target) {
+                        colors.push(COLORS.red);
+                    } else {
+                        colors.push(COLORS.green)
+                    }
+
+                    targetData.push(ele.target);
+                    actualData.push(ele.actual);
+                    labelData.push(ele.display.split(":")[0]);
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        // for (let i = 0; i < element.productions.length; i++) {
+        //     const ele = element.productions[i];
+
+        //     if (ele.actual < ele.target) {
+        //         colors.push(COLORS.red);
+        //     } else {
+        //         colors.push(COLORS.green)
+        //     }
+
+        //     targetData.push(ele.target);
+        //     actualData.push(ele.actual);
+        //     // labelData.push(ele.display);
+        // }
 
         const chartMain = Chart.getChart(`${type}_${i + 1}`);
         // console.log(chartMain);
@@ -186,8 +312,10 @@ const initLoadData = (data, rootEle, type) => {
             chartMain.config.data.datasets[1].data = targetData;
             chartMain.config.data.datasets[0].backgroundColor = colors;
             chartMain.config.options.plugins.tooltip = { ...chartMain.config.options.plugins.tooltip, titleFont: { size: Number.parseInt(tooltipFontSize) }, bodyFont: { size: Number.parseInt(tooltipFontSize) } };
+            chartMain.config.options.scales.x.ticks.font = { size: Number.parseInt(tooltipFontSize) }
             chartMain.update();
         }
+
     }
 }
 
@@ -348,7 +476,7 @@ const initLoadCountData = (data) => {
                 console.log("failed to fetch data", error);
             }
 
-            setTimeout(loadData, 5000);
+            setTimeout(loadData, 1000);
         }
 
         loadData();
