@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Production Monitoring System</title>
+    <link rel="stylesheet" href="mentos_gum.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper dark:bg-dark-grey relative hidden">
+
+        <div class="header">
+            <div
+                class="header-content flex justify-between items-center bg-primary-color dark:bg-black-color py-[10px] px-[10px] md:py-0 md:px-[1.042vw]">
+
+                <div
+                    class="left uppercase text-text-white font-[600] text-[13px] md:text-[1.111vw] flex items-center md:justify-center gap-[1.389vw] md:gap-[4.167vw]">
+                    <div class="hidden md:block w-[9.375vw] h-[3.819vw] py-[0.347vw]">
+                        <img class="w-full h-full object-contain" src="./image/Perfetti_Van_Melle.png" alt="">
+                    </div>
+
+                    <div
+                        class="user_logo cursor-pointer transition-colors hover:text-black hover:bg-white rounded-full px-1 py-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-7 h-7 shrink-0">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                    </div>
+
+                    <p class="shift"></p>
+                </div>
+                <div class="center text-center block uppercase text-text-white md:text-[1.736vw] font-[600]">
+                    <h1 class="hidden md:block translate-x-[-13%]">Production Monitoring System</h1>
+                </div>
+                <div
+                    class="right text-text-white md:text-[1.111vw] uppercase font-[600] hidden md:flex md:justify-between md:w-[15.972vw] items-center">
+                    <p class="date w-[8.900vw]">00-NOV-0000</p>
+                    <p class="time w-[5.700vw]">00:00:00</p>
+                </div>
+            </div>
+
+            <nav aria-label="breadcrumb" class="w-max">
+                <ol class="flex flex-wrap items-center w-full px-1 py-1 rounded-md bg-blue-gray-50 bg-opacity-60">
+                    <li id="nav-main"
+                        class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+                        <p class="opacity-60 hover:text-black transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                                </path>
+                            </svg>
+                        </p>
+                        <span
+                            class="mx-2 font-sans text-sm antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">
+                            /
+                        </span>
+                    </li>
+                    <li id="nav-mentos_gum"
+                        class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+                        <p
+                            class="opacity-60 hover:text-black hover:font-semibold text-black font-semibold transition-colors">
+                            <span>
+                                Mentos + Gum
+                            </span>
+                        </p>
+                        <span
+                            class="mx-2 font-sans text-sm antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">/</span>
+                    </li>
+                    <li id="nav-mentos"
+                        class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+                        <p class="opacity-60 hover:text-black hover:font-semibold transition-colors">
+                            <span>
+                                Mentos
+                            </span>
+                        </p>
+                        <span
+                            class="mx-2 font-sans text-sm antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">/</span>
+                    </li>
+                    <li id="nav-gum"
+                        class="flex items-center font-sans text-base antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-light-blue-500">
+                        <p class="opacity-60 hover:text-black hover:font-semibold transition-colors">
+                            Gum
+                        </p>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="count-semi flex items-center justify-between mt-[10px] md:mt-[0.347vw]">
+                <div class="count-semi-target flex items-center justify-center">
+                    <h1
+                        class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-white">
+                        Target
+                    </h1>
+                    <h1 id="semi-target"
+                        class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-white">
+                        0000</h1>
+                </div>
+
+                <div class="count-semi-actual flex items-center justify-center">
+                    <h1
+                        class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[60px] md:w-[9.028vw] border border-primary-color dark:border-white">
+                        Actual
+                    </h1>
+                    <h1 id="semi-actual"
+                        class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[70px] md:w-[11.806vw] border border-primary-color dark:border-white">
+                        0000</h1>
+                </div>
+
+                <div class="count-semi-diff flex items-center justify-center">
+                    <h1
+                        class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-white">
+                        Diff
+                    </h1>
+                    <h1 id="semi-diff"
+                        class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-white">
+                        0000</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-[10px] md:mt-[0.347vw]">
+            <div class="content-semi">
+                <div class="content-semi-header bg-secondary-color text-primary-color">
+                    <p class="pl-[0.694vw] text-[13px] md:text-[0.903vw] font-[600]">Semi-finished Goods</p>
+                </div>
+                <div class="content-semi-body w-full grid grid-cols-1 gap-[5px] md:gap-[0.347vw] md:grid-cols-7">
+
+                    <div class="mentos md:col-start-1 md:col-end-4">
+                        <div
+                            class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+                            <div class="top px-4 pt-4">
+                                <h5
+                                    class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Mentos
+                                </h5>
+                            </div>
+
+                            <div class="center px-4 flex items-center justify-between relative">
+                                <div class="chart_shift mb-1.5 h-6">
+                                    <div class="chart_shift_list flex items-center gap-2 absolute top-[50%] left-[4%]">
+                                        <h5
+                                            class="shift-1 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 1
+                                        </h5>
+                                        <h5
+                                            class="shift-2 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 2
+                                        </h5>
+                                        <h5
+                                            class="shift-3 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 3
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <div class="gauge absolute -top-[200%] right-[3%]">
+                                    <div class="h-29 w-29 relative">
+                                        <canvas id="semi_gauge_1"></canvas>
+                                        <h5
+                                            class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                            0%
+                                        </h5>
+                                        <h5
+                                            class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                            000/000
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom px-2 pt-8 pb-2 w-full">
+                                <canvas id="semi_1" class="max-h-36"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gum md:col-start-5 md:col-end-8">
+                        <div
+                            class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+                            <div class="top px-4 pt-4">
+                                <h5
+                                    class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Gum
+                                </h5>
+                            </div>
+
+                            <div class="center px-4 flex items-center justify-between relative">
+                                <div class="chart_shift mb-1.5 h-6">
+                                    <div class="chart_shift_list flex items-center gap-2 absolute top-[50%] left-[4%]">
+                                        <h5
+                                            class="shift-1 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 1
+                                        </h5>
+                                        <h5
+                                            class="shift-2 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 2
+                                        </h5>
+                                        <h5
+                                            class="shift-3 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 3
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                                    <div class="h-29 w-29 relative">
+                                        <canvas id="semi_gauge_2"></canvas>
+                                        <h5
+                                            class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                            0%
+                                        </h5>
+                                        <h5
+                                            class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                            000/000
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom px-2 pt-8 pb-2 w-full">
+                                <canvas id="semi_2" class="max-h-36"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="count-finished flex items-center justify-between mt-[40px] md:mt-">
+                <div class="count-finished-target flex items-center justify-center">
+                    <h1
+                        class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-white">
+                        Target
+                    </h1>
+                    <h1 id="fg-target"
+                        class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-white">
+                        0000</h1>
+                </div>
+
+                <div class="count-finished-actual flex items-center justify-center">
+                    <h1
+                        class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[60px] md:w-[9.028vw] border border-primary-color dark:border-white">
+                        Actual
+                    </h1>
+                    <h1 id="fg-actual"
+                        class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[70px] md:w-[11.806vw] border border-primary-color dark:border-white">
+                        0000</h1>
+                </div>
+
+                <div class="count-finished-diff flex items-center justify-center">
+                    <h1
+                        class="text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] bg-primary-color dark:bg-black-color w-[50px] md:w-[9.028vw] border border-primary-color dark:border-white">
+                        Diff
+                    </h1>
+                    <h1 id="fg-diff"
+                        class="text-primary-color dark:text-text-white text-[12px] md:text-[1.389vw] font-[600] text-center md:px-[1.389vw] md:py-[0.347vw] w-[60px] md:w-[11.806vw] border border-primary-color dark:border-white">
+                        0000</h1>
+                </div>
+            </div>
+
+            <div class="content-finished mt-[10px] md:mt-[0.347vw]">
+                <div class="content-finished-header bg-secondary-color text-primary-color">
+                    <p class="pl-[0.694vw] text-[13px] md:text-[0.903vw] font-[600]">Finished Goods</p>
+                </div>
+                <div class="content-finished-body w-full grid grid-cols-1 gap-[5px] md:gap-[0.347vw] md:grid-cols-7">
+
+                    <div class="mentos md:col-start-1 md:col-end-4">
+                        <div
+                            class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+                            <div class="top px-4 pt-4">
+                                <h5
+                                    class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Mentos
+                                </h5>
+                            </div>
+
+                            <div class="center px-4 flex items-center justify-between relative">
+                                <div class="chart_shift mb-1.5 h-6">
+                                    <div class="chart_shift_list flex items-center gap-2 absolute top-[50%] left-[4%]">
+                                        <h5
+                                            class="shift-1 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 1
+                                        </h5>
+                                        <h5
+                                            class="shift-2 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 2
+                                        </h5>
+                                        <h5
+                                            class="shift-3 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 3
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                                    <div class="h-29 w-29 relative">
+                                        <canvas id="fg_gauge_1"></canvas>
+                                        <h5
+                                            class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                            0%
+                                        </h5>
+                                        <h5
+                                            class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                            000/000
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom px-2 pt-8 pb-2 w-full">
+                                <canvas id="fg_1" class="max-h-36"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gum md:col-start-5 md:col-end-8">
+                        <div
+                            class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full">
+                            <div class="top px-4 pt-4">
+                                <h5
+                                    class="block mb-2 text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Gum
+                                </h5>
+                            </div>
+
+                            <div class="center px-4 flex items-center justify-between relative">
+                                <div class="chart_shift mb-1.5 h-6">
+                                    <div class="chart_shift_list flex items-center gap-2 absolute top-[50%] left-[4%]">
+                                        <h5
+                                            class="shift-1 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 1
+                                        </h5>
+                                        <h5
+                                            class="shift-2 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 2
+                                        </h5>
+                                        <h5
+                                            class="shift-3 block mb-2 text-sm antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 cursor-pointer hover:text-orange">
+                                            Shift 3
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <div class="gauge absolute z-[1] -top-[200%] right-[3%]">
+                                    <div class="h-29 w-29 relative">
+                                        <canvas id="fg_gauge_2"></canvas>
+                                        <h5
+                                            class="gauge_percent absolute top-[60%] w-full text-center block mb-2 text-xs antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                            0%
+                                        </h5>
+                                        <h5
+                                            class="gauge_info block mb-2 text-sm text-center -mt-5 antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                            000/000
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom px-2 pt-8 pb-2 w-full">
+                                <canvas id="fg_2" class="max-h-36"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="error hidden">
+            <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+                <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div
+                            class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                                <div class="sm:flex sm:items-start">
+                                    <div
+                                        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                        <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                        </svg>
+                                    </div>
+                                    <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                        <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">
+                                            Connection Lost</h3>
+                                        <div class="mt-2">
+                                            <p class="text-sm text-gray-500">Please check your Internet Connection</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar hidden">
+            <div class="relative bg-gray-50 dark:bg-slate-900 w-screen pattern">
+                <div
+                    class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-[20%] md:top-[9.722vw] -translate-y-2/4 md:left-[16.667vw] min-h-[auto] min-w-16 flex-col rounded-lg border">
+                    <a href="#profile"
+                        class="flex aspect-square min-h-8 min-w-36 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-10 h-10 shrink-0">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+
+                        <small class="text-center text-xs font-medium">Welcome!</small>
+                        <small class="logged_user text-center text-xs font-medium mt-2"></small>
+                        <button
+                            class="logout w-full bg-primary-color mt-2 text-center text-sm text-white font-medium rounded-xl py-1">Log
+                            Out</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="/mentos_gum.js"></script>
+</body>
+
+</html>

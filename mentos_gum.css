@@ -24,7 +24,6 @@ body {
     }
 }
 
-
 img,
 picture,
 video,
@@ -55,7 +54,7 @@ h6 {
 
 :root {
     --success: #05b259;
-    --danger: #fb0000;
+    --danger: #fb0003;
     --normal: #ebf10a;
     --orange: #FF5733;
 }
@@ -66,9 +65,7 @@ body {
 }
 
 .wrapper {
-    /* padding-top: 0.694vw;
-    padding-left: 0.694vw;
-    padding-right: 0.694vw; */
+    padding: 0.694vw;
     margin: 0 auto;
     font-size: 1.111vw;
 }

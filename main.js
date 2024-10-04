@@ -88,11 +88,16 @@ const renderChart = (location, numberOfChart) => {
                                 display: false,
                                 drawTicks: false
                             },
-                            // ticks: {
-                            //     font: {
-                            //         size: 11
-                            //     },
-                            // }
+                            ticks: {
+                                font: {
+                                    // size: 12,
+                                    weight: "bold"
+                                },
+                                maxRotation: 0,
+                                maxTicksLimit: 8,
+                                // mirror: true,
+                                padding: 0,
+                            }
                         },
                         y: {
                             display: false
@@ -153,7 +158,18 @@ const dataOfEachProduct = (product, data) => {
 const initLoadGaugeData = (element, product, data, type, index) => {
     const gaugeInfoEle = document.querySelector(`.${element} .${product.name} .gauge_info`);
     if (gaugeInfoEle) {
-        gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(data.actual)}/${new Intl.NumberFormat().format(data.target)}`;
+        if (data.actual < data.target) {
+            gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(data.actual)}/${new Intl.NumberFormat().format(data.target)}`;
+            gaugeInfoEle.classList.remove("text_danger", "text_success");
+            gaugeInfoEle.classList.add("text_danger");
+        } else if (data.actual >= data.target) {
+            gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(data.actual)}/${new Intl.NumberFormat().format(data.target)}`;
+            gaugeInfoEle.classList.remove("text_danger", "text_success");
+            gaugeInfoEle.classList.add("text_success");
+        } else if (data.actual == 0 && data.target == 0) {
+            gaugeInfoEle.textContent = `000/000`;
+            gaugeInfoEle.classList.remove("text_danger", "text_success");
+        }
     }
 
     const gaugePercent = document.querySelector(`.${element} .${product.name} .gauge_percent`);
@@ -195,7 +211,7 @@ const initLoadMainData = (data, index, type, product, rootElement) => {
         green: "#05b259"
     };
 
-    const tooltipFontSize = window.getComputedStyle(document.querySelector(".gauge .gauge_info"), null).getPropertyValue('font-size').split(".")[0];
+    const tooltipFontSize = window.getComputedStyle(document.querySelector(".gauge .gauge_info"), null).getPropertyValue('font-size').split(".")[0].split("px")[0];
 
     const targetData = [];
     const actualData = [];
@@ -352,7 +368,7 @@ const initLoadMainData = (data, index, type, product, rootElement) => {
         chart.config.data.datasets[1].data = targetData;
         chart.config.data.datasets[0].backgroundColor = colors;
         chart.config.options.plugins.tooltip = { ...chart.config.options.plugins.tooltip, titleFont: { size: Number.parseInt(tooltipFontSize) }, bodyFont: { size: Number.parseInt(tooltipFontSize) } };
-        chart.config.options.scales.x.ticks.font = { size: Number.parseInt(tooltipFontSize) }
+        chart.config.options.scales.x.ticks.font = { size: Number.parseInt(tooltipFontSize - 1), ...chart.config.options.scales.x.ticks.font };
         chart.update();
     }
 }
@@ -379,6 +395,9 @@ const initProductData = (product, productData, index) => {
                 switch (eleAttr) {
                     case "nav-main":
                         window.location.assign("index.html");
+                        break;
+                    case "nav-mentos_gum":
+                        window.location.assign("mentos_gum.html");
                         break;
                     case "nav-mentos":
                         window.location.assign("mentos.html");

@@ -88,11 +88,16 @@ const renderChart = (location, numberOfChart) => {
                                 display: false,
                                 drawTicks: false
                             },
-                            // ticks: {
-                            //     font: {
-                            //         size: 11
-                            //     },
-                            // }
+                            ticks: {
+                                font: {
+                                    // size: 12,
+                                    weight: "bold"
+                                },
+                                maxRotation: 0,
+                                maxTicksLimit: 8,
+                                // mirror: true,
+                                padding: 0,
+                            }
                         },
                         y: {
                             display: false
@@ -137,7 +142,21 @@ const initLoadData = (data, rootEle, type) => {
 
             const gaugeInfoEle = itemContentEle.querySelector(".center .gauge .gauge_info");
             if (gaugeInfoEle) {
-                gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(element.quantity.actual)}/${new Intl.NumberFormat().format(element.quantity.target)}`;
+                if (gaugeInfoEle) {
+                    if (element.quantity.actual < element.quantity.target) {
+                        gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(element.quantity.actual)}/${new Intl.NumberFormat().format(element.quantity.target)}`;
+                        gaugeInfoEle.classList.remove("text_danger", "text_success");
+                        gaugeInfoEle.classList.add("text_danger");
+                    } else if (element.quantity.actual >= element.quantity.target) {
+                        gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(element.quantity.actual)}/${new Intl.NumberFormat().format(element.quantity.target)}`;
+                        gaugeInfoEle.classList.remove("text_danger", "text_success");
+                        gaugeInfoEle.classList.add("text_success");
+                    } else if (element.quantity.actual == 0 && element.quantity.target == 0) {
+                        gaugeInfoEle.textContent = `000/000`;
+                        gaugeInfoEle.classList.remove("text_danger", "text_success");
+                    }
+                }
+                // gaugeInfoEle.textContent = `${new Intl.NumberFormat().format(element.quantity.actual)}/${new Intl.NumberFormat().format(element.quantity.target)}`;
             }
         }
 
@@ -166,7 +185,7 @@ const initLoadData = (data, rootEle, type) => {
             green: "#05b259"
         };
 
-        const tooltipFontSize = window.getComputedStyle(document.querySelector(".gauge .gauge_info"), null).getPropertyValue('font-size').split(".")[0];
+        const tooltipFontSize = window.getComputedStyle(document.querySelector(".gauge .gauge_info"), null).getPropertyValue('font-size').split(".")[0].split("px")[0];
 
 
         const targetData = [];
@@ -313,7 +332,7 @@ const initLoadData = (data, rootEle, type) => {
             chartMain.config.data.datasets[1].data = targetData;
             chartMain.config.data.datasets[0].backgroundColor = colors;
             chartMain.config.options.plugins.tooltip = { ...chartMain.config.options.plugins.tooltip, titleFont: { size: Number.parseInt(tooltipFontSize) }, bodyFont: { size: Number.parseInt(tooltipFontSize) } };
-            chartMain.config.options.scales.x.ticks.font = { size: Number.parseInt(tooltipFontSize) }
+            chartMain.config.options.scales.x.ticks.font = { size: Number.parseInt(tooltipFontSize - 1), ...chartMain.config.options.scales.x.ticks.font }
             chartMain.update();
         }
     }
@@ -364,6 +383,9 @@ const initLoadCountData = (data) => {
                 switch (eleAttr) {
                     case "nav-main":
                         window.location.assign("index.html");
+                        break;
+                    case "nav-mentos_gum":
+                        window.location.assign("mentos_gum.html");
                         break;
                     case "nav-mentos":
                         window.location.assign("mentos.html");

@@ -20,7 +20,8 @@ export default {
         'xs': '390px',
       },
       spacing: {
-        '29': '7.5rem'
+        '29': '7.5rem',
+        '18': '4.5rem'
       }
     },
   },
